@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FIU GPA Tracker</title>
+    <script src=
+    "https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+    </script>
+    <script src=
+    "https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js">
+    </script>
+    <script src=
+    "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js">
+    </script>
+    <script src=
+    "https://cdn.datatables.net/plug-ins/1.10.9/api/fnReloadAjax.js">
+    </script>
+    <link href=
+    "https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel=
+    "stylesheet" type="text/css">
+    <script src=
+    "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+    </script>
+    <link href=
+    "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel=
+    "stylesheet">
+		<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.min.js"></script>
+	<script type="text/javascript" src="http://raw.github.com/markrcote/flot-axislabels/master/jquery.flot.axislabels.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.time.min.js"></script>
+    <link href="main2.css" rel="stylesheet" type="text/css">
+    <script src="nav.js" type="text/javascript">
+    </script>
+    <link href=
+    "http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/overcast/jquery-ui.css"
+    rel="stylesheet">
+    <script src='OvrlDash.js' type='text/javascript'>
+    </script>
+
+
+
+
+
+
+</head>
+<body>
+    <div class="yellowBar"></div>
+    <div id="header">
+        <div class="container clearfix">
+            <div class="logo">
+                <img class="logo" src=
+                "http://www.fiu.edu/_assets/images/core/fiu-logo-large.png">
+                <a href="OvrlDash.html">Overall GPA Dashboard</a>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li>
+                        <a href="OvrlDash.html">GPA Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="../sem_dashboard/current.html">Semester
+                        Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="../common_files/settings.html">Settings</a>
+                    </li>
+                    <li>
+
+                        <a href="../common_files/logout.php">Logout</a>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <a class="btn btn-default dropdown-toggle"
+                            data-toggle="dropdown">Help <span class=
+                            "caret"></span></a>
+                            <ul class="dropdown-menu" style="margin-top: 1px;">
+                                <li>
+                                    <a href="OvrlDash_help_contents.html">GPA Dashboard
+                                    Help</a>
+                                </li>
+                                <li >
+                                    <a href="../sem_dashboard/SemHelpContents.html">Semester Dashboard Help</a>
+                                </li>
+                                <li >
+                                    <a  href="about.html">About</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotronOVRL">
+			
+        <div class="top">
+            <div class="screenPrivacy">
+                <p>screen privacy</p>
+                <div class="onoffswitch">
+                    <input class="onoffswitch-checkbox" id="myonoffswitch"
+                    name="onoffswitch" type="checkbox"> <label class=
+                    "onoffswitch-label" for="myonoffswitch"><span class=
+                    "onoffswitch-inner"></span> <span class=
+                    "onoffswitch-switch"></span></label>
+                </div><!-- <button id="privacyon">SCREEN PRIVACY</button>-->
+            </div>
+            <div class="targetGPA">
+					 <div id="studentMajText">
+                    <label for="gradprogs">Current Program:</label>
+                    
+                </div>
+						<div id="studentMajData">
+                    <p>N/A</p>
+                  
+                </div>
+                <div id="text">
+                    <label for="gradprogs">Target Graduate Program:</label>
+                    <p>Required GPA:</p>
+                </div>
+                <div id="data">
+                    <select id="gradprogs" name="gradprogs">
+                        </select>
+                    <p></p>
+                </div>
+            </div>
+            <div class="studentName">
+                <p id="studName">Welcome</p>
+            </div>
+        </div>
+        <div class="tables">
+            <div class="GPATable">
+<table id="parentTableTaken" width = "100%" border ="1">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Courses Taken</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+     
+    </tbody>
+</table>
+      
+            </div>
+           
+            <div class="futureCoursesTable">
+<table id="parentTable" width = "100%" border ="1">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Courses Needed</th>
+            <th></th>
+				
+        </tr>
+    </thead>
+    <tbody>
+    
+    </tbody>
+
+
+</table>
+          <!--    <table  border="1" cellspacing="0" id="coursesNeeded" width=
+                "100%" >
+                    <thead class="tableHead">
+                        <tr>
+                            <th colspan="4">Courses Needed</th>
+                        </tr>
+									
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+								
+                    </thead>
+                    <tbody class="tableBody">
+				
+
+						  </tbody>
+                    
+                </table> -->
+            </div>
+        </div>
+        <div class="GPACalcBox">
+            <p id="GPAtext">GPA:</p>
+            <p id="GPACalc"></p>
+        </div>
+        <div class="importButton">
+           
+               
+               <button id="forecast" href="">Generate Forecast</button>
+          <!--    <ul id = "addmoddel">
+                    
+                <li><input id ="addButton" type = "submit" name = "Add" value = "ADD" ></li>
+                        
+                    </ul>-->
+            <!--    <ul id = "addArrow">
+                        <li><input id ="addArrow" type = "submit" name = "Add2" value = "ADD" ></li>
+                    
+                    </ul> -->
+        </div>
+			<div id="placeholder" style ="width:600px;height:300px;"> 
+    </div>
+
+
+
+
+
+
+</div>
+    <div class="footer"></div>
+</body>
+</html>
+

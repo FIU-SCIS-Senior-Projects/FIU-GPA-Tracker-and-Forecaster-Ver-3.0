@@ -1,0 +1,224 @@
+* {
+	box-sizing: border-box;
+}
+
+.yellowBar {
+    background-color: #c69b19;
+    border: 1px solid #d6a618;
+    height: 0.375em;
+    margin-top:-0.375em;
+    width: 100%;
+}
+
+
+.headerLinks {
+	width:65%;
+	height:5.5em;
+	margin:auto;
+	margin-top:-2.5em;
+}
+
+
+
+
+.logo {
+	margin-top: 0em;
+	margin-right:1em;
+	height: 57px;
+  	width: 258px;
+}
+
+.logo a {
+	color: #c69b19;
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	text-decoration: none;
+	font-weight: bold;
+	clear:both;
+}
+
+.nav ul {
+	float:right;
+	margin-top:-2.4em;
+	clear: both;
+}
+.nav ul li{
+	display: inline;
+	background: #e7c124;
+	border: 1px solid #d6a618;
+	box-shadow: 0 1px 1px black;
+	font-size: 0.9em;
+	margin: -2px;
+	padding: 3px;
+	clear: both;
+}
+
+.nav ul li a{
+	color: #002d62;
+	display: block;
+	padding: 4px 8px 5px;
+	transition-duration: 4s;
+	transition-timing-function: linear;
+	display: inline;
+	text-decoration: none;
+	font-weight:bold;
+}
+
+ul ol {
+	font-size: 14px;
+	line-height:1.6;
+	list-style-position:outside;
+}
+
+.jumbotron {
+	background-image: url("https://news.fiu.edu/wp-content/uploads/mmc-1.jpg");
+	width: 100%;
+	height:55em;
+	background-size:   cover;               
+        background-repeat: no-repeat;
+        background-position: center center;
+	background-attachment: fixed;
+}
+
+.footer{
+	height:20em;
+	background-color:#E6C12B;
+	border-bottom: 2px solid black;
+	border-top:1px solid #112d54;
+}
+
+#textbox {
+	height:250px;
+	width: 400px;
+	background-color: #112d54;
+	border: 1px solid #E6C12B;
+	margin-left:2.5em;
+}
+
+#textbox h1 {
+	color: white;
+	text-shadow: 1px 1px #ff0000;
+	padding: auto;
+	width: 360px;
+	margin: auto;
+}
+
+#textbox p {
+	color:white;
+	text-shadow: 1px 1px #ff0000;
+	width: 360px;
+	padding-top:10px;
+	margin: auto;
+}
+
+body {
+background: #e1dcd2 none repeat scroll 0 0;
+    font-family: sans-serif;
+    height: 100%;
+    margin: auto;
+    max-width: 60em;
+    text-align: center;
+	
+	}
+
+#header {
+	background-color: #e1dcd2;
+	width: 100%;
+	height:400px;
+    	margin: 0px !important;
+    	padding: 0;
+	z-index: 999;
+	height:7em;
+
+}
+
+
+	
+div #header h1 img {
+    margin-left: 115px;
+	margin-bottom:250px
+}
+div #header img {
+    float: left;
+    padding: 0px 0;
+}
+div #header img {
+    border: solid none;
+}
+
+div #loginbox {
+    background: #2b4e78 none repeat scroll 0 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #333;
+    display: block;
+    margin-left: 40px;
+    min-height: 265px;
+    padding: 50px 50px 50px 58px;
+    position: absolute;
+    top: 85px;
+    width: 500px;
+    z-index: 10;
+}
+	
+	
+#loginboxheader{
+	  border-bottom: 1px solid #fff;
+    color: #fff;
+    margin-bottom: 10px;
+    width: 268px;
+	margin-left: auto;
+    margin-right: auto;
+
+	}
+	
+#main_wrapper {
+    display: block;
+    min-height: 100%;
+    position: absolute;
+    width: 960px;
+}
+#logininfo{
+	
+	margin-left: 15px;
+	
+	}
+	
+.loginbutton {
+    background: transparent url("images/button_login.png") no-repeat scroll 0 0;
+    border: 0 none;
+    color: #fff;
+    cursor: pointer;
+    font-family: tahoma;
+    font-weight: bold;
+    height: 41px;
+    line-height: 10px;
+    text-align: center;
+    text-decoration: none;
+    width: 100px;
+}
+label{
+    color: #fff;
+    display: block;
+    float: left;
+    width: 100%;
+	}
+
+
+div #logincontact{
+    background-color: #fff;
+    border-radius: 10px;
+    height: 300px;
+    position: relative;
+    top: 3px;
+    width: 940px;
+    z-index: 5;
+}
+
+
+div#contactinfo {
+    height: 300px;
+    margin-left: 525px;
+    padding: 25px 30px 30px 25px;
+    position: inherit;
+    width: 440px;
+}

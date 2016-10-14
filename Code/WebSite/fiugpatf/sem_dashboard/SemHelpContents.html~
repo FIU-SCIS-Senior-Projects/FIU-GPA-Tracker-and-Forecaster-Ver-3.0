@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FIU GPA Tracker</title>
+    <script src=
+    "https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+    </script>
+    <script src=
+    "https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js">
+    </script>
+    <script src=
+    "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js">
+    </script>
+    <script src=
+    "https://cdn.datatables.net/plug-ins/1.10.9/api/fnReloadAjax.js">
+    </script>
+    <link href=
+    "https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel=
+    "stylesheet" type="text/css">
+    <script src="nav.js" type="text/javascript">
+    </script>
+    <link href=
+    "http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/overcast/jquery-ui.css"
+    rel="stylesheet">
+    <script src=
+    "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+    </script>
+    <link href=
+    "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel=
+    "stylesheet">
+    <link href="../overallgpadashboard/main2.css" rel="stylesheet" type="text/css">
+    <script src='OvrlDash_help.js' type='text/javascript'>
+    </script>
+</head>
+<body class="gpahelp">
+    <div class="yellowBar"></div>
+    <div id="header">
+        <div class="container clearfix">
+            <div class="logo">
+                <img class="logo" src=
+                "http://www.fiu.edu/_assets/images/core/fiu-logo-large.png">
+                <a href="../overallgpadashboard/OvrlDash.html">Overall GPA Dashboard</a>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li>
+                        <a href="../overallgpadashboard/OvrlDash.html">GPA Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="/current.html">Semseter Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="../common_files/settings.html">Settings</a>
+                    </li>
+                    <li>
+                        <a href="..../common_files/logout.php">Logout</a>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <a class="btn btn-default dropdown-toggle"
+                            data-toggle="dropdown">Help <span class=
+                            "caret"></span></a>
+                            <ul class="dropdown-menu" style="margin-top: 1px;">
+                                <li>
+                                    <a href="../overallgpadashboard/OvrlDash_help_contents.html">GPA Dashboard Help</a>
+                                </li>
+                                <li>
+                                    <a href=#>Semester Dashboard Help</a>
+                                </li>
+                                <li>
+                                    <a href="../overallgpadashboard/about.html">About</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotronOVRLabout">
+        <div class="textboxAbout">
+            <h3>SEMESTER DASHBOARD HELP</h3><br><br>
+            <ol type = "I">
+					<li><a href ="SemHelpDescription.html">WHAT IS THE SEMESTER DASHBOARD?</a></li><br>
+					<li><a href ="SemHelp.html">HOW TO USE THE SEMESTER DASHBOARD</a></li>
+				</ol>
+        </div>
+    </div>
+    <div class="footer"></div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<?php 
+	include_once 'includes/db_connect.php';
+	include_once 'includes/functions.php';
+?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> login</title>
+		<link type="text/css" rel="stylesheet" href="css/login.css"/>
+	</head>
+	<body>
+		<div id = main_wrapper>
+		<div id = "header">
+			<a href = # >
+				<h1><img class = "logo" alt="FIU Logo" src="http://www.fiu.edu/_assets/images/core/fiu-logo-large.png"></h1>
+			</a>
+		</div>
+		<div id = "content">
+			<div id = "loginbox">  
+				<h3 id = "loginboxheader"> 
+					GPA Tracker and Forecaster
+				</h3>
+				<form action = "common_files/process_login.php" method = "post" id = "logininfo">
+   					<label for "username">Username </label>
+						<br><input id="username" class="required type="text" autocomplete="false" placeholder = "Username" size="25" value="" accesskey="u" tabindex="1" name="username"> <br>
+						<label for "password">Password </label>
+						<br><input type="password" autocomplete="off" size="25" value="" accesskey="p" placeholder = "Password" tabindex="2" class="required" name="password" id="password"><br>
+						<input class = "loginbutton" type="submit" value="Login">
+				</form>
+			</div>
+			<div id = "logincontact"> 
+				<div id = "contactinfo"> 
+					<h3>How to log in...</h3>
+					<p>Your username is your FIU MyAccounts username.
+					(Example: jdoe001)
+					</p>
+					<p>Your password is your FIU MyAccounts password.</p>
+					<p>If you forgot your username/password, click <a href ="index.html">here</a>.</p>
+				</div>
+			</div>
+			<div></div>
+			</div>
+		</div>
+	</body>
+</html>

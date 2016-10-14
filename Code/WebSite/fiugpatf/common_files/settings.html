@@ -1,0 +1,254 @@
+<!--<!DOCTYPE html>
+<html>
+	<head>
+		<title>FIU GPA Tracker</title>
+		<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="../css/main2.css" rel="stylesheet" type="text/css">
+		<link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css"/>
+		<link type="text/css" rel="stylesheet" href="../css/main.css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="http://malsup.github.com/jquery.form.js"></script> 
+		<script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/overcast/jquery-ui.css">
+		<script type="text/javascript" src="nav.js"></script>
+		<script type="text/javascript" src="settings.js"></script>
+	</head>
+	<body>
+		<div class="yellowBar"></div>
+		<div id="header">
+			<div class="headerLinks" class="container clearfix">
+				<div class="logo">
+					<img class="logo" src="http://www.fiu.edu/_assets/images/core/fiu-logo-large.png" />
+					<a href=../index.html>GPA Tracker and Forecaster</a>
+				</div>
+				<div class="nav">
+					<ul id="nav">
+					</ul>
+				</div>
+			</div>
+		</div>
+		<h1 class id="title">Settings</h1>
+		<div id ="settingsDiv">
+		</div>
+		<div class="footer">
+		</div>
+	</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="../node_modules/angular-material-data-table/dist/md-data-table.min.css"/>
+    <link rel="stylesheet" href="../node_modules/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="../node_modules/angular-chart/angular-chart.css"/>
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+    <link href="../css/style2.css" rel="stylesheet" type="text/css">
+
+
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="http://malsup.github.com/jquery.form.js"></script> 
+		<script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/overcast/jquery-ui.css">
+		<script type="text/javascript" src="nav.js"></script>
+		<script type="text/javascript" src="settings.js"></script>
+
+
+    <title>Settings</title>
+
+</head>
+
+<body ng-app="myApp" layout="column">
+
+<md-toolbar class="navbar" layout="column" style="font-size: large" md-whiteframe="5">
+    <div layout="row">
+        <div layout="column">
+            <img class="logo" src="http://www.fiu.edu/_assets/images/core/fiu-logo-large.png">
+            <br><br>
+            <span class="layout-row" layout="row">
+               <a class="md-button md-ink-ripple" ng-transclude="" href="../overallgpadashboard/OvrlDash.html" aria-label="GPA DASHBOARD">
+                  <span class="ng-scope">GPA DASHBOARD</span>
+               </a>
+               <a class="md-button md-ink-ripple" ng-transclude="" href="../sem_dashboard/semesterDashboard.html" aria-label="SEMESTER DASHBOARD">
+                  <span class="ng-scope">SEMESTER DASHBOARD</span>
+               </a>
+               <a class="md-button md-ink-ripple" ng-transclude="" href="../common_files/settings.html" aria-label="SETTINGS">
+                  <span class="ng-scope">SETTINGS</span>
+               </a>
+               <a class="md-button md-ink-ripple" ng-transclude="" href="../common_files/help.html" aria-label="HELP">
+                  <span class="ng-scope">HELP</span>
+               </a>
+               <a class="md-button md-ink-ripple" ng-transclude="" href="../common_files/logout.php" aria-label="LOGOUT">
+                 <span class="ng-scope">LOGOUT</span>
+               </a>
+            </span>
+        </div>
+        <span flex></span>
+        <img class="profilePic" src="../img/blank-profile-picture.png">
+    </div>
+</md-toolbar>
+<div class="layout-column flex" layout="column" flex="">
+   <div class="content">
+      <h1>SETTINGS</h1>
+   </div>
+
+   <div class="layout-row" layout="row" layout-align="center center">
+      <div class="layout-column" layout="column" layout-align="center center">
+      <md-card style="background-color:#002d62; width:300px;">
+          <md-card-actions layout="row" layout-align="center center">
+             <md-card-title>
+              <md-card-title-text>
+                <span class="md-headline" style="color:#ffffff;"> Change Password</span>
+              </md-card-title-text>
+             </md-card-title>
+             <button class="md-fab md-mini md-button md-ink-ripple" type="button" style="background:lightgrey;" aria-label="Change Password">
+                <md-icon class="ng-scope" aria-hidden="false">
+                    <svg height="100%" id="lock" viewBox="0 0 32 32" width="100%" xmlns="http://www.w3.org/2000/svg"><path d="M22 16 L22 12 A6 6 0 0 0 10 12 L10 16 z M4 16 L6 16 L6 12 A10 10 0 0 1 26 12 L26 16 L28 16 L28 30 L4 30 z" style="fill:#000000"/></svg>
+
+                </md-icon>
+             </button>
+          
+        </md-card-actions>
+      </md-card>
+
+      <md-card style="background-color:#002d62; width:300px;">
+          <md-card-actions layout="row" layout-align="center center">
+             <md-card-title>
+              <md-card-title-text>
+                <span class="md-headline" style="color:#ffffff;"> Change Major</span>
+              </md-card-title-text>
+             </md-card-title>
+             <button class="md-fab md-mini md-button md-ink-ripple" type="button" style="background:lightgrey;">
+                <md-icon class="ng-scope" md-svg-src="../img/expand.svg" aria-hidden="true">
+                    <svg height="100%" viewBox="0 0 95 95" width="100%" id="svg6584" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"><defs id="defs6586"/><g id="layer1" transform="translate(0,-952.362)"><path d="M 50,973.19535 10.416666,994.02867 50,1014.862 72.916667,1003.2735 c 0,0 0,10.5034 0,15.7551 0,8.3334 8.333333,8.3334 8.333333,8.3334 l 0,-4.1666 c 0,0 -4.166667,-0.2383 -4.166667,-4.1668 0,-6.2499 0,-18.0989 0,-18.0989 l 12.5,-6.90103 z m -18.75,37.49995 0,8.3333 c 0,2.0697 1.354537,4.8438 4.166667,6.2501 l 14.583334,6.25 12.5,-6.25 c 2.812128,-1.4063 6.446382,-4.1898 6.249999,-6.2501 l 0,-8.3333 -18.749999,9.1146 z" id="path7442" style="color:#ffffff;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"/></g></svg>
+                </md-icon>
+             </button>
+          
+        </md-card-actions>
+      </md-card>
+
+      <md-card style="background-color:#002d62; width:300px;">
+          <md-card-actions layout="row" layout-align="center center">
+             <md-card-title>
+              <md-card-title-text>
+                <span class="md-headline" style="color:#ffffff;"> Change Theme</span>
+              </md-card-title-text>
+             </md-card-title>
+             <button class="md-fab md-mini md-button md-ink-ripple" type="button" style="background:lightgrey;">
+                <md-icon class="ng-scope" md-svg-src="../img/expand.svg" aria-hidden="true">
+                    <svg id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style type="text/css">
+	.st0{fill:#000000;}
+</style><g id="XMLID_1134_"><path class="st0" d="M96.8,181.6c23.8,23.2,49.4,44.6,76.5,63.9l10.6,7.6c8.5,6.9,21.2,0.9,21.2-10v-45.2   c6.5,0.3,13.1,0.6,19.6,0.9c31.2,1.7,62.4,3.5,93.6,5.3c20,1.1,39.9,2.3,59.9,3.5c7,0.4,13.7-0.5,20.1-3.4   c18.1-8.2,27.3-27.4,22.5-46.6c-4.7-18.8-22.5-31.3-42.8-30c-13,0.8-25.9,1.7-38.8,2.4c-44.7,2.4-89.4,4.8-134.1,7.2v-45   c0-11-12.7-17-21.2-10l-10.2,7.3c-27.4,19.5-53.2,41.1-77.3,64.6l0,0c-8.5,7-8.5,20,0,27L96.8,181.6z" id="XMLID_1187_"/><path class="st0" d="M415.7,330.8l-0.4-0.4c-23.8-23.2-49.4-44.6-76.5-63.9l-10.6-7.6c-8.5-6.9-21.2-0.9-21.2,10   v45.2c-6.5-0.3-13.1-0.6-19.6-0.9c-31.2-1.7-62.4-3.5-93.6-5.3c-20-1.1-39.9-2.3-59.9-3.5c-7-0.4-13.7,0.5-20.1,3.4   c-18.1,8.2-27.3,27.4-22.5,46.6c4.7,18.8,22.5,31.3,42.8,30c13-0.8,25.9-1.7,38.8-2.4c44.7-2.4,89.4-4.8,134.1-7.2v45   c0,11,12.7,17,21.2,10l10.2-7.3c27.4-19.5,53.2-41.1,77.3-64.6v0C424.2,350.9,424.2,337.8,415.7,330.8z" id="XMLID_1203_"/></g></svg>
+                 </md-icon>
+             </button>
+          
+        </md-card-actions>
+      </md-card>
+      </div>
+
+       <div class="layout-column" layout="column" layout-align="center center">
+          <md-card>
+             <md-card-actions layout="row" layout-align="center center">
+                <md-card-title>
+                 <md-card-title-text>
+                   <span class="md-headline">Import Panther Degree Audit (PDF)</span>
+                 </md-card-title-text>
+                </md-card-title>
+                <form id="PDFimport" action="router.php" enctype="multipart/form-data" method="post">
+            
+                   <input id="Whatif" name="file" type="file" class="ng-hide">
+                   <input name="action" value="importAudit" type="hidden">
+                   <label for="Whatif" class="md-button md-fab md-mini md-ink-ripple">
+
+
+                  
+                      <md-icon class="ng-scope" md-svg-src="../img/pdffile.svg" aria-hidden="true">                 
+                         <svg enable-background="new 0 0 48 48" height="48px" id="Layer_1" version="1.1" viewBox="0 0 95 95" width="48px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path clip-rule="evenodd" d="M37,47H11c-2.209,0-4-1.791-4-4V5c0-2.209,1.791-4,4-4h18.973  c0.002,0,0.005,0,0.007,0h0.02H30c0.32,0,0.593,0.161,0.776,0.395l9.829,9.829C40.84,11.407,41,11.68,41,12l0,0v0.021  c0,0.002,0,0.003,0,0.005V43C41,45.209,39.209,47,37,47z M31,4.381V11h6.619L31,4.381z M39,13h-9c-0.553,0-1-0.448-1-1V3H11  C9.896,3,9,3.896,9,5v38c0,1.104,0.896,2,2,2h26c1.104,0,2-0.896,2-2V13z M33,39H15c-0.553,0-1-0.447-1-1c0-0.552,0.447-1,1-1h18  c0.553,0,1,0.448,1,1C34,38.553,33.553,39,33,39z M33,31H15c-0.553,0-1-0.447-1-1c0-0.552,0.447-1,1-1h18c0.553,0,1,0.448,1,1  C34,30.553,33.553,31,33,31z M33,23H15c-0.553,0-1-0.447-1-1c0-0.552,0.447-1,1-1h18c0.553,0,1,0.448,1,1C34,22.553,33.553,23,33,23  z" fill-rule="evenodd"/></svg>
+                      </md-icon>
+                   </label>
+                  
+                </form>
+           </md-card-actions>
+            
+         </md-card>
+
+         <md-card>
+             <md-card-actions layout="row" layout-align="center center">
+                <md-card-title>
+                 <md-card-title-text>
+                   <span class="md-headline">Import Data</span>
+                 </md-card-title-text>
+                </md-card-title>
+
+                <input id="ImportFile" type="file" class="ng-hide">
+                <label for="ImportFile" class="md-button md-fab md-mini md-ink-ripple" id = "ImportButton">
+                
+                   <md-icon class="ng-scope" md-svg-src="../img/expand.svg" aria-hidden="true">
+                      <svg height="24px" version="1.1" viewBox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns:xlink="http://www.w3.org/1999/xlink"><title/><desc/><defs/><g fill="none" fill-rule="evenodd" id="miu" stroke="none" stroke-width="1"><g id="Artboard-1" transform="translate(-467.000000, -407.000000)"><g id="slice" transform="translate(215.000000, 119.000000)"/><path d="M468,408 L468,430 L483,430 L483,424 L481,424 L481,428 L470,428 L470,410 L481,410 L481,414 L483,414 L483,408 L468,408 Z M483.636039,415.464466 L485.050253,414.050253 L490,419 L485.050253,423.949747 L483.636039,422.535534 L486.170485,420.001088 L475.000499,420.001088 L475.000499,418.00265 L486.174223,418.00265 L483.636039,415.464466 Z" fill="#fff" id="common-login-enter-signin-glyph" transform="translate(479.000000, 419.000000) scale(-1, 1) translate(-479.000000, -419.000000) "/></g></g></svg>
+                   </md-icon>
+                </button>
+           </md-card-actions>
+         </md-card>
+
+         <md-card>
+             <md-card-actions layout="row" layout-align="center center">
+                <md-card-title>
+                 <md-card-title-text>
+                   <span class="md-headline">Export Data</span>
+                 </md-card-title-text>
+                </md-card-title>
+                
+                <button class="md-fab md-mini md-button md-ink-ripple" id="ExportButton" type="button" aria-label="Export">
+
+                   <md-icon class="ng-scope" aria-hidden="true">
+                      <svg id="Layer_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 24 24" style="enable-background:new 0 0 25 25;" xml:space="preserve" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
+
+<g fill="none" fill-rule="evenodd" id="miu" stroke="none" stroke-width="1"><g id="Artboard-1" transform="translate(-395.000000, -407.000000)"><g id="slice" transform="translate(215.000000, 119.000000)"/><path d="M396,408 L396,430 L411,430 L411,424 L409,424 L409,428 L398,428 L398,410 L409,410 L409,414 L411,414 L411,408 L396,408 Z M411.636039,415.464466 L413.050253,414.050253 L418,419 L413.050253,423.949747 L411.636039,422.535534 L414.170485,420.001088 L403.000499,420.001088 L403.000499,418.00265 L414.174223,418.00265 L411.636039,415.464466 Z" fill="#fff" id="common-logout-signout-exit-glyph"/></g></g></svg>
+                   </md-icon>
+                </button>
+           </md-card-actions>
+         </md-card>
+
+         <md-card>
+             <md-card-actions layout="row" layout-align="center center">
+                <md-card-title>
+                 <md-card-title-text>
+                   <span class="md-headline">Delete Data</span>
+                 </md-card-title-text>
+                </md-card-title>
+
+                <button class="md-fab md-mini md-button md-ink-ripple" id="DeleteButton" type="button" aria-label="Delete">
+
+                   <md-icon class="ng-scope" md-svg-src="../img/trash.svg" aria-hidden="true">
+                         <svg id="Layer_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
+<g>
+<path d="M320,113V93.3c0-16.2-13.1-29.3-29.3-29.3h-69.5C205.1,64,192,77.1,192,93.3V113h-80v15h21.1l23.6,290.7 c0,16.2,13.1,29.3,29.3,29.3h141c16.2,0,29.3-13.1,29.3-29.3L379.6,128H400v-15H320z M207,93.3c0-8.1,6.2-14.3,14.3-14.3h69.5 c8.1,0,14.3,6.2,14.3,14.3V113h-98V93.3H207z M202.7,401L192,160h14.5l10.9,241H202.7z M263,401h-14V160h14V401z M309.3,401h-14.6 l10.8-241H320L309.3,401z">
+</g>
+</svg>
+                   </md-icon>
+                </button>
+          
+           </md-card-actions>
+         </md-card>
+      </div>
+        
+ 
+   </div>
+</div>
+
+<script src="../node_modules/angular/angular.min.js"></script>
+<script src="../node_modules/angular-animate/angular-animate.min.js"></script>
+<script src="../node_modules/angular-aria/angular-aria.min.js"></script>
+<script src="../node_modules/angular-material/angular-material.min.js"></script>
+<script src="../node_modules/angular-material-data-table/dist/md-data-table.min.js"></script>
+<script src="../node_modules/angular-chart/Chart.min.js"></script>
+<script src="../node_modules/angular-chart/angular-chart.min.js"></script>
+
+</body>
+

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FIU GPA Tracker</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script src="https://cdn.datatables.net/plug-ins/1.10.9/api/fnReloadAjax.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css"/>
+        <script type="text/javascript" src="nav.js"></script>
+        <link rel="stylesheet"
+            href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/overcast/jquery-ui.css"
+            />
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <link rel="stylesheet"
+            href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link type="text/css" rel="stylesheet" href="../overallgpadashboard/main2.css" />
+        <link type="text/css" rel="stylesheet" href="../common_files/main.css" />
+        <script type='text/javascript' src='SemHelp.js'></script>
+        <style>
+            body{
+            text-align: center;
+            }
+            #slideshow{
+            margin:0 auto;
+            width:800px;
+            height:300px;
+            overflow: hidden;
+            position: relative;
+            }
+            #slideshow ul{
+            list-style: none;
+            margin:0;
+            padding:0;
+            position: absolute;
+            }
+            #slideshow li{
+            float:left;
+            }
+            #slideshow a:hover{
+            background: rgba(0,0,0,0.8);
+            border-color: #000;
+            }
+            #slideshow a:active{
+            background: #990;
+            }
+            .slideshow-prev, .slideshow-next{
+            position: absolute;
+            top:180px;
+            font-size: 30px;
+            text-decoration: none;
+            color:#fff;
+            background: rgba(0,0,0,0.5);
+            padding: 5px;
+            z-index:2;
+            }
+            .slideshow-prev{
+            left:0px;
+            border-left: 3px solid #fff;
+            }
+            .slideshow-next{
+            right:0px;
+            border-right: 3px solid #fff;
+            }
+            .tableOfC{
+            height:300px;
+            float: left;
+            }
+            .pushRight{
+            margin-right:140px;
+            }
+        </style>
+    </head>
+    <body class = "gpahelp">
+        <div class="yellowBar"></div>
+        <div id="header">
+            <div class="headerLinks" class="container clearfix">
+                <div class="logo">
+                    <img class="logo"
+                        src="http://www.fiu.edu/_assets/images/core/fiu-logo-large.png" />
+                    <a href="../overallgpadashboard/OvrlDash.html">Overall GPA Dashboard</a>
+                </div>
+                <div class="nav">
+                    <ul>
+                        <li><a href="../overallgpadashboard/OvrlDash.html">GPA Dashboard</a></li>
+                        <li><a href="current.html">Grade Dashboard</a></li>
+                        <li><a href="../common_files/settings.html">Settings</a></li>
+                        <li><a href="../common_files/logout.php">Logout</a></li>
+                        <li>
+                            <div class="dropdown">
+                                <a class="btn btn-default dropdown-toggle" data-toggle="dropdown">Help
+                                <span class="caret"></span></a>
+                                <ul style = "margin-top: 1px;" class = "dropdown-menu ">
+                                    <li><a href="../overallgpadashboard/OvrlDash_help_contents.html">GPA Dashboard Help</a></li>
+                                    <li><a href="SemHelpContents.html">Semester Dashboard Help</a></li>
+                                    <li><a href="../overallgpadashboard/about.html">About</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotronSEM">
+			<div class = "slidecounter pushRight">
+                <p id ="currentslide" > 1/10 </p>
+            </div>
+			<div id = "mid">
+				<div class="tableOfC">
+		        	<ol type="I">
+		            	<li id = "s2"><a>Current semester dashboard</a></li>
+		                <li id = "s3"><a>Current semester dashboard slidedown</a></li>
+		                <li id = "s4"><a>Deleteing a course</a></li>
+		                <li id = "s5"><a>Semester Dashboard</a></li>
+		                <li id = "s6"><a>Adding assessment group</a></li>
+		                <li id = "s7"><a>New Assessment</a></li>
+		                <li id = "s8"><a>Seeing Grades</a></li>
+		                <li id = "s9"><a>Adding Grades</a></li>
+		                <li id = "s10"><a>Modifying grades</a></li>
+		                <li id = "s11"><a>Deleteing grade</a></li>
+		           </ol>
+		        </div>
+		        <!-- <h4 style = "margin-top: -15px"> GPA DASHBOARD TUTORIAL SLIDESHOW </h4> -->
+		        <div id="slideshow">
+		            <a href="#" class="slideshow-prev">&laquo;</a>
+		            <ul>
+		                <li><img src="../screenshots/Current_Courses.png"
+		                    alt="photo2" width=800 /></li>
+		                <li><img src="../screenshots/Current_Courses_Dropdown.png"
+		                    alt="photo3" width=800 /></li>
+		                <li><img src="../screenshots/Current_Course_Delete.png"
+		                    alt="photo4" width=800 /></li>
+		                <li><img src="../screenshots/Empty_Breakdown.png"
+		                    alt="photo5" width=800 /></li>
+		                <li><img src="../screenshots/Add_Assessment.png"
+		                    alt="photo6" width=800 /></li>
+		                <li><img src="../screenshots/Assessment_Type_Empty.png"
+		                    alt="photo7" width=800 /></li>
+		                <li><img src="../screenshots/Add_Grade.png"
+		                    alt="photo8" width=800 /></li>
+		                <li><img src="../screenshots/Breakdown.png"
+		                    alt="photo9" width=800 /></li>
+		                <li><img src="../screenshots/ModifyGrade.png"
+		                    alt="photo10" width=800 /></li>
+		                <li><img src="../screenshots/DeleteGrade.png"
+		                    alt="photo11" width=800 /></li>
+		            </ul>
+		            <a href="#" class="slideshow-next">&raquo;</a>
+		        </div>
+			</div>
+            <div class = "slideshowtext pushRight">
+                <p id = "slideshowtext"> Here is the info for the slide </p>
+            </div>
+        </div>
+        <div class="footer"></div>
+    </body>
+</html>
