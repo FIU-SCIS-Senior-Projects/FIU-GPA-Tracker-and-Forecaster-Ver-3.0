@@ -3337,3 +3337,83 @@
 04/27/2016 - 16:18:17:5412 DEBUG SettingsController::getCourses sproject-VirtualBox course: Acc For Decisions 
 04/27/2016 - 16:18:17:5588 DEBUG SettingsController::getCourses sproject-VirtualBox course: Studies In World Rel 
 04/27/2016 - 16:18:17:5802 DEBUG SettingsController::getCourses sproject-VirtualBox course: Fund Computer System 
+10/18/2016 - 15:39:46:0778 WARNING toLogTests::testErrorLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: ERROR 1476819585.943
+10/18/2016 - 15:39:47:0751 WARNING toLogTests::testWarningLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: ERROR 1476819587.0208
+10/18/2016 - 15:39:47:2627 ERROR toLogTests::testWarningLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: WARNING 1476819587.0208
+10/18/2016 - 15:39:48:1020 WARNING toLogTests::testInfoLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: ERROR 1476819588.0499
+10/18/2016 - 15:39:48:1664 ERROR toLogTests::testInfoLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: WARNING 1476819588.0499
+10/18/2016 - 15:39:48:3026 INFO toLogTests::testInfoLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: INFO 1476819588.0499
+10/18/2016 - 15:39:49:0166 WARNING toLogTests::testDebugLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: ERROR 1476819588.9525
+10/18/2016 - 15:39:49:1175 ERROR toLogTests::testDebugLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: WARNING 1476819588.9525
+10/18/2016 - 15:39:49:2656 INFO toLogTests::testDebugLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: INFO 1476819588.9525
+10/18/2016 - 15:39:49:3726 DEBUG toLogTests::testDebugLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: DEBUG 1476819588.9525
+10/18/2016 - 15:39:49:9508 WARNING toLogTests::testErrorLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819589.9147
+10/18/2016 - 15:39:50:7652 WARNING toLogTests::testWarningLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819590.7108
+10/18/2016 - 15:39:50:8634 ERROR toLogTests::testWarningLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819590.7108
+10/18/2016 - 15:39:51:5725 WARNING toLogTests::testInfoLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819591.5405
+10/18/2016 - 15:39:51:6778 ERROR toLogTests::testInfoLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819591.5405
+10/18/2016 - 15:39:51:8227 INFO toLogTests::testInfoLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819591.5405
+10/18/2016 - 15:39:52:6504 WARNING toLogTests::testDEBUGLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819592.5805
+10/18/2016 - 15:39:52:7580 ERROR toLogTests::testDEBUGLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819592.5805
+10/18/2016 - 15:39:52:8740 INFO toLogTests::testDEBUGLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819592.5805
+10/18/2016 - 15:39:52:9938 DEBUG toLogTests::testDEBUGLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819592.5805
+10/18/2016 - 15:41:45:7159 WARNING toLogTests::testErrorLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: ERROR 1476819705.6466
+10/18/2016 - 15:41:46:5434 WARNING toLogTests::testWarningLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: ERROR 1476819706.4904
+10/18/2016 - 15:41:46:6010 ERROR toLogTests::testWarningLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: WARNING 1476819706.4904
+10/18/2016 - 15:41:47:3024 WARNING toLogTests::testInfoLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: ERROR 1476819707.2693
+10/18/2016 - 15:41:47:3697 ERROR toLogTests::testInfoLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: WARNING 1476819707.2693
+10/18/2016 - 15:41:47:4470 INFO toLogTests::testInfoLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: INFO 1476819707.2693
+10/18/2016 - 15:41:48:1151 WARNING toLogTests::testDebugLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: ERROR 1476819708.0814
+10/18/2016 - 15:41:48:2459 ERROR toLogTests::testDebugLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: WARNING 1476819708.0814
+10/18/2016 - 15:41:48:3343 INFO toLogTests::testDebugLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: INFO 1476819708.0814
+10/18/2016 - 15:41:48:4517 DEBUG toLogTests::testDebugLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: DEBUG 1476819708.0814
+10/18/2016 - 15:41:49:1155 WARNING toLogTests::testErrorLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819709.042
+10/18/2016 - 15:41:49:8941 WARNING toLogTests::testWarningLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819709.8394
+10/18/2016 - 15:41:50:0158 ERROR toLogTests::testWarningLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819709.8394
+10/18/2016 - 15:41:50:7557 WARNING toLogTests::testInfoLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819710.7147
+10/18/2016 - 15:41:50:8662 ERROR toLogTests::testInfoLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819710.7147
+10/18/2016 - 15:41:50:9368 INFO toLogTests::testInfoLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819710.7147
+10/18/2016 - 15:41:51:6464 WARNING toLogTests::testDEBUGLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819711.5877
+10/18/2016 - 15:41:51:7431 ERROR toLogTests::testDEBUGLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819711.5877
+10/18/2016 - 15:41:51:8257 INFO toLogTests::testDEBUGLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819711.5877
+10/18/2016 - 15:41:51:9227 DEBUG toLogTests::testDEBUGLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819711.5877
+10/18/2016 - 15:42:09:1301 WARNING toLogTests::testErrorLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: ERROR 1476819729.0645
+10/18/2016 - 15:42:10:0092 WARNING toLogTests::testWarningLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: ERROR 1476819729.969
+10/18/2016 - 15:42:10:0841 ERROR toLogTests::testWarningLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: WARNING 1476819729.969
+10/18/2016 - 15:42:10:8157 WARNING toLogTests::testInfoLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: ERROR 1476819730.7827
+10/18/2016 - 15:42:10:8905 ERROR toLogTests::testInfoLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: WARNING 1476819730.7827
+10/18/2016 - 15:42:10:9604 INFO toLogTests::testInfoLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: INFO 1476819730.7827
+10/18/2016 - 15:42:11:6885 WARNING toLogTests::testDebugLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: ERROR 1476819731.6125
+10/18/2016 - 15:42:11:7705 ERROR toLogTests::testDebugLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: WARNING 1476819731.6125
+10/18/2016 - 15:42:11:8274 INFO toLogTests::testDebugLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: INFO 1476819731.6125
+10/18/2016 - 15:42:11:9100 DEBUG toLogTests::testDebugLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: DEBUG 1476819731.6125
+10/18/2016 - 15:42:12:5371 WARNING toLogTests::testErrorLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819732.4685
+10/18/2016 - 15:42:13:3393 WARNING toLogTests::testWarningLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819733.2666
+10/18/2016 - 15:42:13:4100 ERROR toLogTests::testWarningLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819733.2666
+10/18/2016 - 15:42:14:0938 WARNING toLogTests::testInfoLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819734.0641
+10/18/2016 - 15:42:14:1812 ERROR toLogTests::testInfoLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819734.0641
+10/18/2016 - 15:42:14:2437 INFO toLogTests::testInfoLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819734.0641
+10/18/2016 - 15:42:14:9338 WARNING toLogTests::testDEBUGLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819734.8899
+10/18/2016 - 15:42:15:0139 ERROR toLogTests::testDEBUGLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819734.8899
+10/18/2016 - 15:42:15:1048 INFO toLogTests::testDEBUGLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819734.8899
+10/18/2016 - 15:42:15:1747 DEBUG toLogTests::testDEBUGLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476819734.8899
+10/18/2016 - 16:27:57:9906 WARNING toLogTests::testErrorLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: ERROR 1476822477.9132
+10/18/2016 - 16:27:58:8605 WARNING toLogTests::testWarningLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: ERROR 1476822478.8098
+10/18/2016 - 16:27:58:9562 ERROR toLogTests::testWarningLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: WARNING 1476822478.8098
+10/18/2016 - 16:27:59:6843 WARNING toLogTests::testInfoLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: ERROR 1476822479.626
+10/18/2016 - 16:27:59:7836 ERROR toLogTests::testInfoLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: WARNING 1476822479.626
+10/18/2016 - 16:27:59:8720 INFO toLogTests::testInfoLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: INFO 1476822479.626
+10/18/2016 - 16:28:00:5690 WARNING toLogTests::testDebugLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: ERROR 1476822480.5357
+10/18/2016 - 16:28:00:6409 ERROR toLogTests::testDebugLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: WARNING 1476822480.5357
+10/18/2016 - 16:28:00:7478 INFO toLogTests::testDebugLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: INFO 1476822480.5357
+10/18/2016 - 16:28:00:8396 DEBUG toLogTests::testDebugLevel_EntryExists fiugpatf-VirtualBox PHP Unit toLog Test: DEBUG 1476822480.5357
+10/18/2016 - 16:28:01:5073 WARNING toLogTests::testErrorLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476822481.4497
+10/18/2016 - 16:28:02:2961 WARNING toLogTests::testWarningLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476822482.2457
+10/18/2016 - 16:28:02:4388 ERROR toLogTests::testWarningLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476822482.2457
+10/18/2016 - 16:28:03:3060 WARNING toLogTests::testInfoLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476822483.2421
+10/18/2016 - 16:28:03:3889 ERROR toLogTests::testInfoLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476822483.2421
+10/18/2016 - 16:28:03:4906 INFO toLogTests::testInfoLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476822483.2421
+10/18/2016 - 16:28:04:2588 WARNING toLogTests::testDEBUGLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476822484.1588
+10/18/2016 - 16:28:04:3673 ERROR toLogTests::testDEBUGLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476822484.1588
+10/18/2016 - 16:28:04:5475 INFO toLogTests::testDEBUGLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476822484.1588
+10/18/2016 - 16:28:04:6691 DEBUG toLogTests::testDEBUGLevel_LogEntryCount fiugpatf-VirtualBox PHP Unit toLog Test: 1476822484.1588

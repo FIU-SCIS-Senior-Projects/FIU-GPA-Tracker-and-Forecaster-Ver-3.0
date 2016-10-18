@@ -1,5 +1,9 @@
 <?php
 include_once 'toLog.php';
+
+define("ROOT" , "/home/sproject/FIU-GPA-Tracker-and-Forecaster-Ver-3.0/Code/WebSite/fiugpatf");
+
+
 class DatabaseConnector
 {
    protected $host = "localhost";

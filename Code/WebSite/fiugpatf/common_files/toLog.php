@@ -4,10 +4,11 @@ class workerThread extends Thread {
     protected $info; 
     protected $settings; 
 
-    //protected $root = '/home/GPA2/Code/WebSite/fiugpatf';
-    protected $root = '/home/sproject/GPA2/Code/WebSite/fiugpatf';
+    protected $root = "";
+    //protected $root = '/home/sproject/GPA2/Code/WebSite/fiugpatf';
    
     public function __construct($id, $info){
+        $this->root = ROOT;
         $this->id = $id;
         $this->info = $info;
         $this->msgSemKey = sem_get(9876543210);
@@ -15,8 +16,18 @@ class workerThread extends Thread {
     }
 
     public function run(){
+
+
         $settingSemKey = sem_get(9876543212);
         $settingMemKey = shm_attach(123456788);
+
+	if ($settingMemKey === false)
+	{
+    	echo "Fail to attach shared memory.\n";
+    	sem_remove($settingMemKey);
+    	exit;
+	}
+
         $settingKey = 666666666;
 
         sem_acquire($settingSemKey);
@@ -24,7 +35,6 @@ class workerThread extends Thread {
         if (shm_has_var($settingMemKey, $settingKey))
         {
            $this->settings = shm_get_var($settingMemKey, $settingKey);
-           //echo "has var\n";
         }
         else
         {
@@ -39,45 +49,57 @@ class workerThread extends Thread {
 
     }
 
+
     function printt(){
         sem_acquire($this->msgSemKey);
 
         $mode = $this->settings['error_mode']['mode'];
+        //error_log("In toLog, this->settings['error_mode']['mode'] = ".$mode . "\n",3,"/tmp/phplog.txt");
+        //error_log("In toLog, this->id'] = " . $this->id . "\n",3,"/tmp/phplog.txt");
 
-        if ($this->id == 0)
+        if ($mode == 'DEBUG')
         {
-            if ($mode == 'ERROR') {
-                sem_release($this->msgSemKey);
-                return;
-            }
-            else if ($mode == 'WARNING') {
-                sem_release($this->msgSemKey);
-                return;
-            }
-            else if($mode == 'INFO') {
+            //Debug log level: Print all Log level types
+        }
+        else if ($mode == 'INFO')
+        {
+            //Info log level: Print all log levels except Debug
+            if ($this->id == 0){
                 sem_release($this->msgSemKey);
                 return;
             }
         }
-        else if ($this->id == 1)
+        else if ($mode == 'WARNING')
         {
-            if ($mode == 'ERROR'){
+            //Warning log level: Print all log levels except Debug and Info
+            if ($this->id == 0){
                 sem_release($this->msgSemKey);
                 return;
             }
-            else if($mode == 'WARNING'){
+            else if($this->id == 1){
                 sem_release($this->msgSemKey);
                 return;
             }
         }
-        else if ($this->id == 3)
+        else if ($mode == 'ERROR')
         {
-            if ($mode == 'ERROR'){
+            //Error log Level: Print all log levels except Debug,Info and Warning
+            if ($this->id == 0){
                 sem_release($this->msgSemKey);
                 return;
             }
+            else if($this->id == 1){
+                sem_release($this->msgSemKey);
+                return;
+            }
+            else if($this->id == 2){
+                sem_release($this->msgSemKey);
+                return;
+            }
+
         }
 
+//		echo "Ready for debug error write!";
         $x = $this->info;
         $time = microtime(true);
         $dFormat = "m/d/Y - H:i:s:";
@@ -91,7 +113,7 @@ class workerThread extends Thread {
 
         sem_release($this->msgSemKey);
 
-        $this->checkConsumer();
+       $this->checkConsumer();
     }
 
     function checkConsumer(){
@@ -99,12 +121,13 @@ class workerThread extends Thread {
         $memKey = shm_attach(123456789);
         $flgKey = 555555555;
 
+//123456788 <- msg queue key
         sem_acquire($flgSemKey);
 
         if (shm_has_var($memKey, $flgKey))
         {
-            $flag = shm_get_var($memKey, $flgKey);
 
+            $flag = shm_get_var($memKey, $flgKey);
             if ($flag == 0)
             {
                 exec("(cd $this->root/common_files/ && exec php consumer.php > /dev/null 2>/dev/null &)");
@@ -134,8 +157,8 @@ class ErrorLog {
     public function toLog($error_id, $location, $details){
 
         $worker = new workerThread("$error_id", "$location $this->host $details");
-        $worker->start();
 
+        $worker->start();
         return $error_id;
     }
 
