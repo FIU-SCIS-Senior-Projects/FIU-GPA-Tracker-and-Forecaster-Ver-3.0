@@ -70,7 +70,7 @@ if($action == "exportData") {
         $courseList = $courseList . ")";
 		$dump1 = shell_exec('mysqldump --user=root --password=sqliscool --host=localhost --no-create-info --xml GPA_Tracker Users  StudentCourse StudentMajor --where="userID=' . $user . '"');
 		$dump2 = shell_exec('mysqldump --user=root --password=sqliscool --host=localhost --no-create-info --xml GPA_Tracker AssessmentType Assessment --where="studentCourseID in ' . $courseList .'"');
-		echo cutLastLine(cutLastLine(cutLastLine($dump1))) . "\n" . cutFirstLine(cutFirstLine(cutFirstLine($dump2)));
+		echo cutFirstLine(cutLastLine(cutLastLine(cutLastLine($dump1)))) . "\n" . cutFirstLine(cutFirstLine(cutFirstLine($dump2)));
 	}
 }
 if($action == "importData") {
@@ -88,7 +88,7 @@ if($action == "importData") {
 		{
 			if($xml->database[0]['name'] == 'GPA_Tracker'){
 				if(validate_and_insert_data($xml)) {
-					echo "true";
+					echo "Data imported successfully.";
 				}
 				else
 				{
@@ -106,14 +106,19 @@ if($action == "deleteData") {
 	if(isset($_SESSION['username'])){
 		$user = $_SESSION['userID'];
 		$mysqli = new mysqli("localhost","root","sqliscool","GPA_Tracker");
+
+	//Deleting courses
         $stmt = $mysqli->prepare("DELETE from StudentCourse WHERE userID = ?");
         $stmt->bind_param('s', $user);
         $stmt->execute();
 
-	if(isset($_SESSION['username'])){
-		$user = $_SESSION['userID'];
-		$mysqli = new mysqli("localhost","root","sqliscool","GPA_Tracker");
-        $stmt = $mysqli->prepare("DELETE from StudenMajor WHERE userID = ?");
+	//Deleting major info
+        $stmt = $mysqli->prepare("DELETE from StudentMajor WHERE userID = ?");
+        $stmt->bind_param('s', $user);
+        $stmt->execute();
+
+	//Deleting gpa
+	$stmt = $mysqli->prepare("UPDATE Users SET gpa = NULL WHERE userID = ?");
         $stmt->bind_param('s', $user);
         $stmt->execute();
 
@@ -285,6 +290,7 @@ function validate_and_insert_data($xml)
 	{
 		foreach($table_data->children() as $rows)
 		{
+			//Confirming data corresponds to logged in user
 			if($table_data['name'] == 'StudentData')
 			{
 				if($rows->field[1] != $user)
@@ -292,6 +298,20 @@ function validate_and_insert_data($xml)
 					return false;
 				}
 			}
+
+			//Inserting gpa
+			else if($table_data['name'] == 'Users')
+			{
+				if($rows->field[6] != $user)
+				{
+					return false;
+				}
+				$stmt = $mysqli->prepare("UPDATE Users SET gpa = ? WHERE userID = ?");
+				$stmt->bind_param('ss',$rows->field[8], $user);
+    			$stmt->execute();
+			}
+
+			//Inserting courses
 			else if($table_data['name'] == 'StudentCourse')
 			{
 				if($rows->field[8] != $user)
@@ -303,6 +323,8 @@ function validate_and_insert_data($xml)
 				$stmt->bind_param('sssssssss', $rows->field[0], $rows->field[1], $rows->field[2], $rows->field[3], $rows->field[4], $rows->field[5], $rows->field[6], $rows->field[7], $user);
     			$stmt->execute();
 			}
+
+			//Inserting major
 			else if($table_data['name'] == 'StudentMajor')
 			{
 				if($rows->field[0] != $user)
@@ -314,6 +336,8 @@ function validate_and_insert_data($xml)
 				$stmt->bind_param('sss', $user, $rows->field[1], $rows->field[2]);
     			$stmt->execute();
 			}
+
+			//Inserting assessment type
 			else if($table_data['name'] == 'AssessmentType')
 			{
 				if(!$coursesSet)
