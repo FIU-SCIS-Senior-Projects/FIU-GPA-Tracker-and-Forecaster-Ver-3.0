@@ -1,5 +1,5 @@
 <?php
-//include_once '../toLog.php';
+include_once '../toLog.php';
 $session_name = 'sec_session_id';   // Set a custom session name
 $secure = FALSE;
 // This stops JavaScript being able to access the session id.
