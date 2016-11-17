@@ -114,12 +114,13 @@ class toLogTests extends PHPUnit_Framework_TestCase
         $msgInfo = $this->MSGInfo . $currentTime;
         $msgDebug = $this->MSGDebug . $currentTime;
 
-        //Attemt to writ all log level cases, only Error should succeed.
+        //Attempt to write all log level cases, only Error should succeed.
         $log = new ErrorLog();
         $log->toLog(3, __METHOD__, $msgError);
         $log->toLog(2, __METHOD__, $msgWarning);
         $log->toLog(1, __METHOD__, $msgInfo);
         $log->toLog(0, __METHOD__, $msgDebug);
+
         // Read from file
         $lines = file('../log.txt');
         $foundString ="";

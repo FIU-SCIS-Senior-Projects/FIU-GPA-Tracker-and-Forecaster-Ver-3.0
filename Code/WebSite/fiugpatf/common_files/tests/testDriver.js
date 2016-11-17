@@ -5,10 +5,63 @@ var fileName;
 var xmlDoc;
 var i = 0;
 var greatestId = 0;
+var parentTableRoot = null;
+var rootData = [];
+var childData = [];
+var courseData = [];
 
 $(document).ready(function() {
      start();
 });
+
+ function addRootButtons(oTable, nTr) {
+     var aData = oTable.fnGetData(nTr);
+     var id = removeSpace(aData[0]);
+     var sOut = '';
+     sOut += '<div id="itemDetails' + id + '">';
+     sOut += '	<div class="buttonColumnDetails">';
+     sOut += '		<button id="addChild' + id + '">Add Child Bucket</button>';
+     sOut += '		<button id="addCourse' + id + '">Add Course</button>';
+     sOut += '	</div>';
+     sOut += '</div>';
+     return sOut;
+}
+
+function addChildBuckets(oTable, nTr) {
+     var aData = oTable.fnGetData(nTr);
+     var id = removeSpace(aData[0]);
+     var sOut = '';
+     sOut += '<table id ="childBucketsDT' + id + '">';
+     sOut += '<thead><tr><th></th><th></th><th></th><th></th></tr></thead>';
+     sOut += '<tbody>';
+     sOut += '<div id="itemDetails' + id + '">';
+     sOut += '	<div class="buttonColumnDetails">';
+     sOut += '		<button id="addChild' + id + '">Add Child Bucket</button>';
+     sOut += '		<button id="addCourse' + id + '">Add Course</button>';
+     sOut += '	</div>';
+     sOut += '</div>';
+     sOut += '</tbody></table>';
+
+     return sOut;
+}
+
+function addCourses(oTable, nTr) {
+     var aData = oTable.fnGetData(nTr);
+     var id = removeSpace(aData[0]);
+     var sOut = '';
+     sOut += '<table id ="coursesDT' + id + '">';
+     sOut += '<thead><tr><th></th><th></th><th></th><th></th><th></th></tr></thead>';
+     sOut += '<tbody>';
+     sOut += '<div id="itemDetails' + id + '">';
+     sOut += '	<div class="buttonColumnDetails">';
+     sOut += '		<button id="addChild' + id + '">Add Child Bucket</button>';
+     sOut += '		<button id="addCourse' + id + '">Add Course</button>';
+     sOut += '	</div>';
+     sOut += '</div>';
+     sOut += '</tbody></table>';
+
+     return sOut;
+}
 
 function start() {
 
@@ -67,9 +120,9 @@ function subProgData()
 }
 
 function addRootBucket()
-{
+{  
+    if(parentTableRoot != null)parentTableRoot.fnDestroy();
     node = this.parentNode;
-    $('#rootBucketAddition').remove();
     var div = '';
     // Data entry form
     div += '     <div id="rootBucketAddition" title="Add Root Bucket">';
@@ -116,7 +169,7 @@ function addRootBucket()
           alert ("Empty Fields");
         } else {
 
-        $($.parseXML('<bucket id="' + greatestId + '"></bucket>')).find("bucket").appendTo(main);
+        $($.parseXML('<bucket id="' + description + '"></bucket>')).find("bucket").appendTo(main);
         bucket = $(xmlDoc).find('bucket').last();
         $($.parseXML('<data></data>')).find("data").appendTo(bucket);
         var data = $(xmlDoc).find('data').last();
@@ -128,169 +181,324 @@ function addRootBucket()
 
         xmlString = new XMLSerializer().serializeToString(xmlDoc);
         xmlFormatted = formatXml(xmlString);
+
+        rootData.push([description, allRequired, quantity, quantification]);
+         
         //alert(xmlFormatted);
+        //var parentTableRoot = null;
+        parentTableRoot = $('#parentTableRoot').dataTable({
+                     "aaData": rootData,
+                     "aoColumns": [{
+                          "sTitle": "Description"
+                          }, {
+                          "sTitle": "All Required"
+                          }, {
+                          "sTitle": "Quantity"
+                          }, {
+                          "sTitle": "Quantification"
+                          }],
+                      order: [1, "asc"],
+                      columnDefs: [{
+                      sortable: false,
+                      targets: [0]
+                 }],
+                 "bJQueryUI": true,
+                 "fixedColumns": true,
+                 "retrieve": true,
+                 "iDisplayLength": 25
+       });
 
-        var div = '';
-        div += '<tr class="odd" role="row">';
-    	div += '   <td class="sorting_1">' + description + '</td>';
-        div += '   <td>' + allRequired + '</td>';
-        div += '   <td>' + quantity + '</td>';
-        div += '   <td>' + quantification +'</td>';
-        div += '</tr>';
-
-        $('#rows').append(div);
         $('#rootBucketAddition').dialog("close");
         $('#rootBucketAddition').remove();
 
-       
-        //for each element in xml dom
-        $(xmlDoc).each(function() {
-           currId = $(this).attr("greatestId");
-           if (currId > greatestId) {
-             greatestId = currId
-           }
-        });
-       greatestId ++;
 
       $('#parentTableRoot tbody tr td').off();
-      $('#parentTableRoot tbody tr td').on('click', rowClickHandler);
+      $('#parentTableRoot tbody tr td').on('click', clickRoot);
        
     }
     });
 
-}
+   function clickRoot() {
 
+       var nTr = this.parentNode;
+       var open = false;
+       try {
+           if ($(nTr).next().children().first().hasClass("ui-state-highlight"))
+               open = true;
+       } catch (err) {
+           alert(err);
+       }
+       if (open) {
+           /* This row is already open - close it */
+           parentTableRoot.fnClose(nTr);
+           $(nTr).css("color", "");
+       } else {
 
-function rowClickHandler(){
-    node = this.parentNode;
-    var open= false;
+           var x = 0;
+           var h;
+           var element;
+           var parent;
 
-    try{
-        if($(node).next().children().first().hasClass("ui-state-highlight"))
-            open=true;
-    }catch(err){
-        alert(err);
-    }
-
-    if (open){
-        //This row is already open - close it
-       $('.myclass').remove();
-       $('#courseTable').remove();
-       $('#childTable').remove();
-       
-    } else {
-        if ($(node).next().hasClass("myclass")) {
-            $('#rootDetails').remove();
-         } 
-        else {if (!$(node).next().hasClass("myclass")) {
-           addRootButtons();
-        }}
-        
-        $(xmlDoc).find('bucket').each(function() {
-           $(this).children().each(function() {
-             if($(this).prop("tagName") == "bucket") {
-               $('.myclass').remove();
-               updateChildTable();
+           for (h = 0; h < childData.length; h++) {
+               element = childData[h];
+               parent = element[0];
+               if (parent == parentTableRoot.fnGetData(nTr)[0]) {
+                   x = 1;
+               }
            }
-          });
-        });
 
-        $(xmlDoc).find('bucket').each(function() {
-           $(this).children().each(function() {
-             if($(this).prop("tagName") == "course") {
-               $('.myclass').remove();
-               updateCourseTable();
+           if (x) {
+               //children found
+
+               openChildBuckets(nTr, parentTableRoot);
+
+               var aData = parentTableRoot.fnGetData(nTr);
+               var htmlid = removeSpace(aData[0]);
+               $("#addChild" + htmlid).button();
+               $("#addCourse" + htmlid).button();
+               $("#addChild" + htmlid).click(function () {
+                   addChild(parentTableRoot, nTr);
+               });
+               $("#addCourse" + htmlid).click(function () {
+                   addCourse(parentTableRoot, nTr);
+               });
+
            }
-          });
-        });
-    }
-  
-}
+           else {
+               //no children found
+               var y = 0;
 
-function rowClickHandler2(){
-    node = this.parentNode;
-    var open= false;
+               for (h = 0; h < courseData.length; h++) {
+                   element = courseData[h];
+                   parent = element[0];
+                   if (parent == parentTableRoot.fnGetData(nTr)[0]) {
+                       y = 1;
+                   }
+               }
+               if (y) {
 
-    try{
-        if($(node).next().children().first().hasClass("ui-state-highlight"))
-            open=true;
-    }catch(err){
-        alert(err);
-    }
+                   openCourses(nTr, parentTableRoot);
 
-    if (open){
-       //This row is already open - close it
-       $('.childClass').remove();
-       $('#childCourseTable').remove();
-       //$('#childTable').remove();
+                   var aData = parentTableRoot.fnGetData(nTr);
+                   var htmlid = removeSpace(aData[0]);
+                   $("#addChild" + htmlid).button();
+                   $("#addCourse" + htmlid).button();
+                   $("#addChild" + htmlid).click(function () {
+                       addChild(parentTableRoot, nTr);
+                   });
+                   $("#addCourse" + htmlid).click(function () {
+                       addCourse(parentTableRoot, nTr);
+                   });
 
-    }else{
-       if ($(node).next().hasClass("childClass")) {
-            $('#childDetails').remove();
-         } else {
-             if (!$(node).next().hasClass("childClass")) {
-             addChildButtons();
+               }
+               else {
+                   parentTableRoot.fnOpen(nTr, addRootButtons(parentTableRoot, nTr), "ui-state-highlight");
+                   var aData = parentTableRoot.fnGetData(nTr);
+                   var htmlid = removeSpace(aData[0]);
+                   $("#addChild" + htmlid).button();
+                   $("#addCourse" + htmlid).button();
+                   $("#addChild" + htmlid).click(function () {
+                       addChild(parentTableRoot, nTr);
+                   });
+                   $("#addCourse" + htmlid).click(function () {
+                       addCourse(parentTableRoot, nTr);
+                   });
+               }
+
            }
+
+
+       }
+   }
+      
+
+   function openChildBuckets(nTr, oTable) {
+       var aData = oTable.fnGetData(nTr);
+       var htmlid = removeSpace(aData[0]);
+       var bucket = htmlid;
+       oTable.fnOpen(nTr, addChildBuckets(oTable, nTr), "ui-state-highlight");
+       var childBucketsDT = null;
+       var h;
+       var element;
+       var parent;
+       var childrenData = [];
+       var rest;      
+
+      for(h = 0; h < childData.length; h++) {
+        element = childData[h];
+        parent = element[0];
+        rest = element[1];
+        if (parent == aData[0])
+        {
+           childrenData.push(rest);
+        } 
+      }
+       childBucketsDT = $('#childBucketsDT' + bucket).dataTable({
+                             "aaData": childrenData,
+                             "aoColumns": [{
+                                 "sTitle": "Description"
+                             }, {
+                                 "sTitle": "All Required"
+                             }, {
+                                 "sTitle": "Quantity"
+                             }, {
+                                 "sTitle": "Quantification"
+                             }],
+
+                             "bAutoWidth": false,
+                             "sPaginationType": "full_numbers",
+                             "retrieve": true
+                      });
+        $('#childBucketsDT' + bucket + ' tbody tr td').off();
+        $('#childBucketsDT' + bucket + ' tbody tr td').on('click', clickChild);
+
+      function clickChild() {
+
+         var nTr = this.parentNode;
+
+         var open = false;
+         try {
+            if ($(nTr).next().children().first().hasClass("ui-state-highlight"))
+               open = true;
+         } catch (err) {
+               alert(err);
+           }
+           if (open) {
+               /* This row is already open - close it */
+               childBucketsDT.fnClose(nTr);
+               $(nTr).css("color", "");
+           } else {
+               var aData = childBucketsDT.fnGetData(nTr);
+               var x = 0;
+
+               $(xmlDoc).find('bucket').each(function() {
+                  if ($(this).attr("id") == aData[0]) {
+                     $(this).children().each(function() {
+                        if($(this).prop("tagName") == "bucket") {
+                          x = 1;
+                        }
+                      });    
+                  }
+               });
+               if (x) {
+                  //children found
+             
+                  openChildBuckets(nTr, childBucketsDT); 
+
+                  var aData = childBucketsDT.fnGetData(nTr);
+                  var htmlid = removeSpace(aData[0]);
+                  $("#addChild" + htmlid).button();
+                  $("#addCourse" + htmlid).button();
+                  $("#addChild" + htmlid).click(function() {
+                     addChild(childBucketsDT, nTr);
+                  });
+                 $("#addCourse" + htmlid).click(function() {
+                     addCourse(childBucketsDT, nTr);
+                 });  
+              
+               }
+               else {
+                  //no children found
+                  var y = 0;
+                  $(xmlDoc).find('bucket').each(function() {
+                     if ($(this).attr("id") == childBucketsDT.fnGetData(nTr)[0]) {
+                      $(this).children().each(function() {
+                        if($(this).prop("tagName") == "course") {
+                          y = 1;
+                        }
+                      });
+                     }              
+                   });         
+                   if (y) {
+                     openCourses(nTr, childBucketsDT); 
+
+                     var aData = childBucketsDT.fnGetData(nTr);
+                     var htmlid = removeSpace(aData[0]);
+                     $("#addChild" + htmlid).button();
+                     $("#addCourse" + htmlid).button();
+                     $("#addChild" + htmlid).click(function() {
+                        addChild(childBucketsDT, nTr);
+                     });
+                     $("#addCourse" + htmlid).click(function() {
+                       addCourse(childBucketsDT, nTr);
+                     });  
+
+                   }  
+                   else {
+                      childBucketsDT.fnOpen(nTr, addRootButtons(childBucketsDT, nTr), "ui-state-highlight");
+                      var aData = childBucketsDT.fnGetData(nTr);
+                      var htmlid = removeSpace(aData[0]);
+                      $("#addChild" + htmlid).button();
+                      $("#addCourse" + htmlid).button();
+                      $("#addChild" + htmlid).click(function() {
+                         addChild(childBucketsDT, nTr);
+                      });
+                      $("#addCourse" + htmlid).click(function() {
+                         addCourse(childBucketsDT, nTr);
+                      });  
+                   }
+
+                 }  
+               }
         }
-        //updateChildCourseTable();
-        //update child course table
-    }
-  
-}
+        
+   }
 
-function addRootButtons()
+   function openCourses(nTr, oTable) {
+       var aData = oTable.fnGetData(nTr);
+       var htmlid = removeSpace(aData[0]);
+       var bucket = htmlid;
+       oTable.fnOpen(nTr, addCourses(oTable, nTr), "ui-state-highlight");
+       var coursesDT = null;
+       var h;
+       var element;
+       var parent;
+       var coursesData = [];
+       var rest;      
+
+      for(h = 0; h < courseData.length; h++) {
+        element = courseData[h];
+        parent = element[0];
+        rest = element[1];
+        if (parent == aData[0])
+        {
+           coursesData.push(rest);
+        } 
+      }
+
+       coursesDT = $('#coursesDT' + bucket).dataTable({
+                             "aaData": coursesData,
+                             "aoColumns": [{
+                                 "sTitle": "Course ID"
+                             }, {
+                                 "sTitle": "Course Name"
+                             }, {
+                                 "sTitle": "Credits"
+                             }, {
+                                 "sTitle": "Course Description"
+                             }, {
+                                 "sTitle": "Minimum Grade"
+                             }],
+
+                             "bAutoWidth": false,
+                             "sPaginationType": "full_numbers",
+                             "retrieve": true
+                      });
+
+        
+   }
+
+
+
+
+
+
+function addChild(oTable, nTr)
 {
+    //if(childTableDT != null)childTableDT.fnDestroy();
+    
     var div = '';
-    div += '<tr class="myclass" id="rootDetails">';
-    div += '<td class="myclass" colspan="4">';
-    div += '  <div id="rootButtons">';
-    div += '    <div class="buttonDetails">';
-    div += '        <button id="addChild" class="rootButton">Add Child Bucket</button><br>';
-    div += '        <button id="addCourse" class="rootButton">Add Course</button><br>';
-    div += '    </div>';
-    div +=   '</div>';
-    div += '</td>';
-    div += '</tr>';
-    $('#rows').append(div);
-  
-    $('#addChild').click(function(){
-      addChild();
-    });
-
-   $('#addCourse').click(function(){    
-      addCourse();
-   });
-}
-
-function addChildButtons()
-{
-    var div = '';
-    div += '<tr class="childClass" id="childDetails">';
-    div += '<td class="ui-state-highlight" colspan="4">';
-    div += '  <div id="childButtons">';
-    div += '    <div class="buttonDetails">';
-    div += '        <button id="addChild" class="rootButton">Add Child Bucket</button><br>';
-    div += '        <button id="addCourse" class="rootButton">Add Course</button><br>';
-    div += '    </div>';
-    div +=   '</div>';
-    div += '</td>';
-    div += '</tr>';
-    $('#childrenRows').append(div);
-  
-    $('#addChild').click(function(){
-      i++;
-      addChild();
-    });
-
-   $('#addCourse').click(function(){    
-      addChildCourse();
-   });
-}
-
-function addChild()
-{
-    //node = this.parentNode;
-    $('#childBucketAddition').remove();
+    // Data entry form
     var div = '';
     div += '     <div id="childBucketAddition" title="Add Child Bucket">';
 	div += '         <table>';
@@ -336,158 +544,52 @@ function addChild()
            alert ("Empty Fields");
         } else {
 
-        bucket = $(xmlDoc).find('bucket').first();
-        $($.parseXML('<bucket></bucket>')).find("bucket").appendTo(bucket);
-        bucket = $(xmlDoc).find('bucket').last();
-        $($.parseXML('<data></data>')).find("data").appendTo(bucket);
-        var data = $(xmlDoc).find('data').last();
+           $(xmlDoc).find('bucket').each(function() {
+           if ($(this).attr("id") == oTable.fnGetData(nTr)[0]) {
+              var bucket = $(this);
 
-        $($.parseXML('<description>' + description + '</description>')).find("description").appendTo(data);
-        $($.parseXML('<allRequired>' + allRequired + '</allRequired>')).find("allRequired").appendTo(data);
-        $($.parseXML('<quantity>' + quantity + '</quantity>')).find("quantity").appendTo(data);
-        $($.parseXML('<quantification>' + quantification + '</quantification>')).find("quantification").appendTo(data);
-        
+              $($.parseXML('<bucket id="' + description + '"></bucket>')).find("bucket").appendTo(bucket);
+
+              $(xmlDoc).find('bucket').each(function() {
+              if ($(this).attr("id") == description) {
+                 bucket = $(this);
+                 $($.parseXML('<data id="' + description + '"></data>')).find("data").appendTo(bucket);
+
+                 $(xmlDoc).find('data').each(function() {
+                 if ($(this).attr("id") == description) {
+                    var data = $(this);
+                    $($.parseXML('<description>' + description + '</description>')).find("description").appendTo(data);
+                    $($.parseXML('<allRequired>' + allRequired + '</allRequired>')).find("allRequired").appendTo(data);
+                    $($.parseXML('<quantity>' + quantity + '</quantity>')).find("quantity").appendTo(data);
+                    $($.parseXML('<quantification>' + quantification + '</quantification>')).find("quantification").appendTo(data);
+                 }
+                 });
+              }
+              });
+
+           }
+        });
+          
         xmlString = new XMLSerializer().serializeToString(xmlDoc);
         xmlFormatted = formatXml(xmlString);
         //alert(xmlFormatted);
+          
+        var parent = [oTable.fnGetData(nTr)[0]];
+        childData.push([parent,[description, allRequired, quantity, quantification]]);
 
-        updateChildTable();
+        //addChildBuckets(nTr, childBucketTableDT);
 
-    $('#childBucketAddition').dialog("close");
-     $('#childBucketAddition').remove();   
-    //$('#parentTableChild tbody tr td').off();
-    //$('#parentTableChild tbody tr td').on('click', rowClickHandler2);
-       
-    
-    //$('#parentTableRoot tbody tr td').off();
-    //$('#parentTableRoot tbody tr td').on('click', rowClickHandler);
+        $('#childBucketAddition').dialog("close");
+        $('#childBucketAddition').remove();   
     }
     });
 }
 
-function updateChildTable() {
-
-   $('.child').remove();
-   $('#childTable').remove();
-   $('.myclass').remove();
-   var id = 0;
+} //addRootBucket closing bracket
 
 
-      var div = '';
-      div += '<tr id="childTable" class="ui-state-highlight">';
-      div += '<td class="ui-state-highlight" colspan="4">';
-      div += '   <div id="child_wrapper" class="dataTables_wrapper no-footer">';
-      div += '      <table id="parentTableChild" class="dataTable no-footer" role="grid" aria-describedby="parentTableChild_info" style="width: 100%;" width="100%" border="1">';
-      div += '         <thead>';
-      div += '          <tr role="row">';
-      div += '             <th class="sorting_asc" tabindex="0" aria-controls="courses" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Description: activate to sort column descending">Description</th>';
-      div += '             <th class="sorting" tabindex="0" aria-controls="courses" rowspan="1" colspan="1" aria-label="All Required: activate to sort column ascending">All Required</th>';
-      div += '             <th class="sorting" tabindex="0" aria-controls="courses" rowspan="1" colspan="1" aria-label="Quantity: activate to sort column ascending">Quantity</th>';
-      div += '             <th class="sorting" tabindex="0" aria-controls="courses" rowspan="1" colspan="1" aria-label="Quantification: activate to sort column ascending">Quantification</th>';
-      div += '          </tr>';
-      div += '         </thead>';     
-      div += '         <tbody id="childrenRows">';
-      div += '         </tbody>';
-      div += '      </table>';
-      div += '   </div>';
-      div += '</td>';
-      div += '</tr>';  
-
-    //$('#rows').append(div);  
-   
-    var divRow;
-    
-    $(xmlDoc).find('bucket').each(function() {
-
-       $(this).children().each(function() {
-
-         if($(this).prop("tagName") == "bucket") {
-          $(this).children().each(function() {
-
-            if($(this).prop("tagName") == "data") {
-               
-               
-               divRow = $(
-               '<tr id="childTable" class="ui-state-highlight">'+
-               '<td class="ui-state-highlight" colspan="4">'+
-               '   <div id="child_wrapper" class="dataTables_wrapper no-footer">'+
-               '      <table id="parentTableChild" class="dataTable no-footer" role="grid" aria-describedby="parentTableChild_info" style="width: 100%;" width="100%" border="1">'+
-               '         <thead>'+
-               '          <tr role="row">'+
-               '             <th class="sorting_asc" tabindex="0" aria-controls="courses" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Description: activate to sort column descending">Description</th>'+
-               '             <th class="sorting" tabindex="0" aria-controls="courses" rowspan="1" colspan="1" aria-label="All Required: activate to sort column ascending">All Required</th>'+
-               '             <th class="sorting" tabindex="0" aria-controls="courses" rowspan="1" colspan="1" aria-label="Quantity: activate to sort column ascending">Quantity</th>'+
-               '             <th class="sorting" tabindex="0" aria-controls="courses" rowspan="1" colspan="1" aria-label="Quantification: activate to sort column ascending">Quantification</th>'+
-               '          </tr>'+
-               '         </thead>'+     
-               '         <tbody>'+
-               '            <tr id="childTable" class="ui-state-highlight">'+
-               '            <td class="ui-state-highlight" colspan="4">'+
-               '            <div id="child_wrapper" class="dataTables_wrapper no-footer">'+
-               '            <table class="dataTable no-footer" role="grid" aria-describedby="parentTableChild_info" style="width: 100%;" width="100%" border="1">'+
-               '             <thead id="header' + id +'">'+
-               '             </thead>'+
-               '             <tbody>'+
-               '               <tr class="child" role="row">'+
-               '                 <td class="sorting_1">' + $(this).find('description').text() + '</td>'+
-               '                 <td>' + $(this).find('allRequired').text() + '</td>'+
-               '                 <td>' + $(this).find('quantity').text() + '</td>'+
-               '                 <td>' + $(this).find('quantification').text() +'</td>'+
-               '               </tr>'+
-               '             </tbody>'+
-               '            </table>'+
-               '           </div>'+
-               '          </td>'+
-               '         </tr>'+
-               '      </tbody>'+
-               '      </table>'+
-               '   </div>'+
-               '</td>'+
-               '</tr>');
-            
-              // divHeader = $('<tr role="row">'+
-                //             '<th class="sorting_asc" tabindex="0" aria-controls="courses" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Description: activate to sort column descending">Description</th>'+
-                  //           '<th class="sorting" tabindex="0" aria-controls="courses" rowspan="1" colspan="1" aria-label="All Required: activate to sort column ascending">All Required</th>'+
-                    //         '<th class="sorting" tabindex="0" aria-controls="courses" rowspan="1" colspan="1" aria-label="Quantity: activate to sort column ascending">Quantity</th>'+
-                      //       '<th class="sorting" tabindex="0" aria-controls="courses" rowspan="1" colspan="1" aria-label="Quantification: activate to sort column ascending">Quantification</th>'+
-                        //     '</tr>');
-                
-                   //if (i == 0) {
-                      //$("#childrenRows").append(divRow);  
-                   //}
-                   
-                   //if (i > 0) {
-                     //j = i - 1;
-                    // $("#rows").append(divHeader);
-                     $("#rows").append(nestDeep(i));
-                    //} 
-                 
-             }
-          });
-         }
-      });
-     });
-    
-     
-       function nestDeep(count) {
-          return count > 0 
-                ? divRow.append(nestDeep(count - 1)) 
-                : divRow;
-          //id++;
-      }
-
-      
-      addRootButtons();
-
-   $('#parentTableChild tbody tr td').off();
-   $('#parentTableChild tbody tr td').on('click', rowClickHandler2);
-
-}
-
-function addCourse()
+function addCourse(oTable, nTr)
 {
-   //$('#rootDetails').remove();
-   $('#courseAddition').remove();
    var div = '';
     div += '     <div id="courseAddition" title="Add Course">';
 	div += '         <table>';
@@ -541,236 +643,40 @@ function addCourse()
            alert ("Empty Fields");
         } else {
 
-        bucket = $(xmlDoc).find('bucket').first();
-        $($.parseXML('<course></course>')).find("course").appendTo(bucket);
-        var course = $(xmlDoc).find('course').last();
-        $($.parseXML('<courseID>' + courseID + '</courseID>')).find("courseID").appendTo(course);
-        $($.parseXML('<courseName>' + courseName + '</courseName>')).find("courseName").appendTo(course);
-        $($.parseXML('<credits>' + credits + '</credits>')).find("credits").appendTo(course);
-        $($.parseXML('<courseDescription>' + courseDesc + '</courseDescription>')).find("courseDescription").appendTo(course);
-        $($.parseXML('<minGrade>' + minGrade + '</minGrade>')).find("minGrade").appendTo(course);
-        
-        xmlString = new XMLSerializer().serializeToString(xmlDoc);
-        xmlFormatted = formatXml(xmlString);
-        //alert(xmlFormatted);
+           $(xmlDoc).find('bucket').each(function() {
+              if ($(this).attr("id") == oTable.fnGetData(nTr)[0]) {
 
-        updateCourseTable();
+                 var bucket = $(this);
+                 $($.parseXML('<course id="' + courseID + '"></course>')).find("course").appendTo(bucket);
+
+                 $(xmlDoc).find('course').each(function() {
+                   if ($(this).attr("id") == courseID) {
+                     var course = $(this);
+                     $($.parseXML('<courseID>' + courseID + '</courseID>')).find("courseID").appendTo(course);
+                     $($.parseXML('<courseName>' + courseName + '</courseName>')).find("courseName").appendTo(course);
+                     $($.parseXML('<credits>' + credits + '</credits>')).find("credits").appendTo(course);
+                     $($.parseXML('<courseDescription>' + courseDesc + '</courseDescription>')).find("courseDescription").appendTo(course);
+                     $($.parseXML('<minGrade>' + minGrade + '</minGrade>')).find("minGrade").appendTo(course);
+                   }
+                 });
+                 
+              }
+           });
+
+           xmlString = new XMLSerializer().serializeToString(xmlDoc);
+           xmlFormatted = formatXml(xmlString);
+           //alert(xmlFormatted);
+
+           var parent = [oTable.fnGetData(nTr)[0]];
+           courseData.push([parent, [courseID, courseName, credits, courseDesc, minGrade]]);
         
 
         $('#courseAddition').dialog("close");
         $('#courseAddition').remove();
-    //$('#parentTableChild tbody tr td').off();
-    //$('#parentTableChild tbody tr td').on('click', rowClickHandler2);
-
-    //$('#parentTableRoot tbody tr td').off();
-    //$('#parentTableRoot tbody tr td').on('click', rowClickHandler);
+    
      }
     });
 
-}
-
-function updateCourseTable() {
-
-   $('.course').remove();
-   $('#courseTable').remove();
-
-   var div = '';
-   div += '<tr id="courseTable" class="ui-state-highlight">';
-   div += '<td class="ui-state-highlight" colspan="4">';
-   div += '   <div id="courses_wrapper" class="dataTables_wrapper no-footer">';
-   div += '    <table id="courses" class="dataTable no-footer" role="grid" aria-describedby="courses_info">';
-   div += '       <thead>';
-   div += '          <tr role="row">';
-   div += '             <th class="sorting_asc" tabindex="0" aria-controls="courses" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Course ID: activate to sort column descending">Course ID</th>';
-   div += '             <th class="sorting" tabindex="0" aria-controls="courses" rowspan="1" colspan="1" aria-label="Course Name: activate to sort column ascending">Course Name</th>';
-   div += '             <th class="sorting" tabindex="0" aria-controls="courses" rowspan="1" colspan="1" aria-label="Credits: activate to sort column ascending">Credits</th>';
-   div += '             <th class="sorting" tabindex="0" aria-controls="courses" rowspan="1" colspan="1" aria-label="Course Description: activate to sort column ascending">Course Description</th>';
-   div += '             <th class="sorting" tabindex="0" aria-controls="courses" rowspan="1" colspan="1" aria-label="Minimum Grade: activate to sort column ascending">Minimum Grade</th>'; 
-   div += '          </tr>';
-   div += '       </thead>';     
-   div += '       <tbody id="coursesRows">';
-   div += '       </tbody>';
-   div += '    </table>';
-   div += '   </div>';
-   div += '</td>';
-   div += '</tr>';
-
-   $('.myclass').remove();
-   $('#rows').append(div);
-
-   $(xmlDoc).find('bucket').each(function() {
-      $(this).children().each(function() {
-         if($(this).prop("tagName") == "course") {
-          //$(this).each(function() {
-
-                var divRow = '';
-                divRow += '   <tr class="course" role="row">';
-                divRow += '        <td class="sorting_1">' + $(this).find('courseID').text() + '</td>';
-                divRow += '        <td>' + $(this).find('courseName').text() + '</td>';
-                divRow += '        <td>' + $(this).find('credits').text() + '</td>';
-                divRow += '        <td>' + $(this).find('courseDesc').text() + '</td>';
-                divRow += '        <td>' + $(this).find('minGrade').text() + '</td>';
-                divRow += '   </tr>';
-
-               $('#coursesRows').append(divRow);
-               
-          //});
-         }
-      });
-    });
-    addRootButtons();
-
-   $('#parentTableChild tbody tr td').off();
-   $('#parentTableChild tbody tr td').on('click', rowClickHandler2);
-}
-
-function addChildCourse()
-{
-   //$('#rootDetails').remove();
-   $('#childCourseAddition').remove();
-
-   var div = '';
-    div += '     <div id="childCourseAddition" title="Add Course">';
-	div += '         <table>';
-	div += '             <thead>';
-	div += '                 <tr>';
-        div += '                     <td>Course ID:</td>' ;
-	div += '                     <td><input type="text" id="courseID"></td>';
-	div += '                 </tr>';
-	div += '                 <tr>';
-	div += '                     <td>Course Name:</td>';
-	div += '                     <td><input type="text" id="courseName"></td>';
-	div += '                 </tr>';
-        div += '                 <tr>';
-        div += '                     <td>Credits:</td>' ;
-	div += '                     <td><input type="text" id="credits"></td>';
-	div += '                 </tr>';
-        div += '                 <tr>';
-        div += '                     <td>Course Description:</td>' ;
-	div += '                     <td><input type="text" id="courseDesc"></td>';
-	div += '                 </tr>';
-        div += '                 <tr>';
-        div += '                     <td>Minimum Grade:</td>' ;
-	div += '                     <td><input type="text" id="minGrade"></td>';
-	div += '                 </tr>';           
-	div += '             </thead>';
-	div += '         </table>';
-    div += '         <button type="button" id="subChildCourse">Submit</button>';
-    div += '   </div>';
-
-   $('#tabs').append(div);
-
-    $('#childCourseAddition').dialog({
-        modal: true,
-        width: "500px",
-        close: function( event, ui ) {
-            $('#childCourseAddition').remove();
-        }
-    });
-   
-
-   $('#subChildCourse').click(function(){
-        
-
-        var courseID = $('#courseID').val();
-        var courseName = $('#courseName').val();
- 	var credits = $('#credits').val();
- 	var courseDesc = $('#courseDesc').val();
-        var minGrade = $('#minGrade').val();
-  
-        var course;
-        if(courseID == "" || courseName == "" || credits == "" || courseDesc == "" || minGrade == "") {
-           alert ("Empty Fields");
-        } else {
-
-        bucket = $(xmlDoc).find('bucket').last();
-        $($.parseXML('<course></course>')).find("course").appendTo(bucket);
-        
-        $(bucket).find('course').each(function() {
-    
-              course = $(this);
-        });
-     
-    
-        $($.parseXML('<courseID>' + courseID + '</courseID>')).find("courseID").appendTo(course);
-        $($.parseXML('<courseName>' + courseName + '</courseName>')).find("courseName").appendTo(course);
-        $($.parseXML('<credits>' + credits + '</credits>')).find("credits").appendTo(course);
-        $($.parseXML('<courseDescription>' + courseDesc + '</courseDescription>')).find("courseDescription").appendTo(course);
-        $($.parseXML('<minGrade>' + minGrade + '</minGrade>')).find("minGrade").appendTo(course);
-        
-        xmlString = new XMLSerializer().serializeToString(xmlDoc);
-        xmlFormatted = formatXml(xmlString);
-        //alert(xmlFormatted);
-
-        updateChildCourseTable();
-        
-
-        $('#childCourseAddition').dialog("close");
-        $('#childCourseAddition').remove();
-    //$('#parentTableChild tbody tr td').off();
-    //$('#parentTableChild tbody tr td').on('click', rowClickHandler2);
-
-    //$('#parentTableRoot tbody tr td').off();
-    //$('#parentTableRoot tbody tr td').on('click', rowClickHandler);
-     }
-    });
-
-}
-
-function updateChildCourseTable() {
-
-   $('.childCourse').remove();
-   //$('#courseTable').remove();
-
-   var div = '';
-   div += '<tr id="childCourseTable" class="ui-state-highlight">';
-   div += '<td class="ui-state-highlight" colspan="4">';
-   div += '   <div id="courses_wrapper" class="dataTables_wrapper no-footer">';
-   div += '    <table id="courses" class="dataTable no-footer" role="grid" aria-describedby="courses_info">';
-   div += '       <thead>';
-   div += '          <tr role="row">';
-   div += '             <th class="sorting_asc" tabindex="0" aria-controls="courses" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Course ID: activate to sort column descending">Course ID</th>';
-   div += '             <th class="sorting" tabindex="0" aria-controls="courses" rowspan="1" colspan="1" aria-label="Course Name: activate to sort column ascending">Course Name</th>';
-   div += '             <th class="sorting" tabindex="0" aria-controls="courses" rowspan="1" colspan="1" aria-label="Credits: activate to sort column ascending">Credits</th>';
-   div += '             <th class="sorting" tabindex="0" aria-controls="courses" rowspan="1" colspan="1" aria-label="Course Description: activate to sort column ascending">Course Description</th>';
-   div += '             <th class="sorting" tabindex="0" aria-controls="courses" rowspan="1" colspan="1" aria-label="Minimum Grade: activate to sort column ascending">Minimum Grade</th>'; 
-   div += '          </tr>';
-   div += '       </thead>';     
-   div += '       <tbody id="childCoursesRows">';
-   div += '       </tbody>';
-   div += '    </table>';
-   div += '   </div>';
-   div += '</td>';
-   div += '</tr>';
-
-   $('.childClass').remove();
-   $('.myclass').remove();
-   $('#childrenRows').append(div);
-
-   $(xmlDoc).find('bucket').each(function() {
-      $(this).children().each(function() {
-         if($(this).prop("tagName") == "course" && $(this).parent().parent().prop("tagName") == "bucket") {
-
-                var divRow = '';
-                divRow += '   <tr class="childCourse" role="row">';
-                divRow += '        <td class="sorting_1">' + $(this).find('courseID').text() + '</td>';
-                divRow += '        <td>' + $(this).find('courseName').text() + '</td>';
-                divRow += '        <td>' + $(this).find('credits').text() + '</td>';
-                divRow += '        <td>' + $(this).find('courseDesc').text() + '</td>';
-                divRow += '        <td>' + $(this).find('minGrade').text() + '</td>';
-                divRow += '   </tr>';
-
-               $('#childCoursesRows').append(divRow);
-         }
-      });
-    });
-    //$('#childrenRows').append(div);
-    addChildButtons()
-    addRootButtons();
-
-
-   $('#parentTableChild tbody tr td').off();
-   $('#parentTableChild tbody tr td').on('click', rowClickHandler2);
 }
 
 
@@ -812,6 +718,14 @@ function download(filename, text) {
    }
 } 
 
+function removeSpace(string) {
+     var substrings = string.split(" ");
+     string = "";
+     for (var i = 0; i < substrings.length; i++) {
+         string = string.concat(substrings[i]);
+     }
+     return string;
+}
 
 function formatXml(xml) {
     var formatted = '';

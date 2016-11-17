@@ -17,7 +17,6 @@ class workerThread extends Thread {
 
     public function run(){
 
-
         $settingSemKey = sem_get(9876543212);
         $settingMemKey = shm_attach(123456788);
 
