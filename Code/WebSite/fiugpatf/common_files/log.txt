@@ -3437,3 +3437,43 @@
 11/17/2016 - 01:12:09:7152 ERROR toLogTests::testDEBUGLevel_LogEntryCount camila-VirtualBox PHP Unit toLog Test: 1479345129.5603
 11/17/2016 - 01:12:09:9080 INFO toLogTests::testDEBUGLevel_LogEntryCount camila-VirtualBox PHP Unit toLog Test: 1479345129.5603
 11/17/2016 - 01:12:10:0345 DEBUG toLogTests::testDEBUGLevel_LogEntryCount camila-VirtualBox PHP Unit toLog Test: 1479345129.5603
+11/18/2016 - 01:45:51:8962 WARNING toLogTests::testErrorLevel_EntryExists camila-VirtualBox PHP Unit toLog Test: ERROR 1479433551.69
+11/18/2016 - 01:45:53:3298 WARNING toLogTests::testWarningLevel_EntryExists camila-VirtualBox PHP Unit toLog Test: ERROR 1479433553.1501
+11/18/2016 - 01:45:53:4664 ERROR toLogTests::testWarningLevel_EntryExists camila-VirtualBox PHP Unit toLog Test: WARNING 1479433553.1501
+11/18/2016 - 01:45:54:8810 WARNING toLogTests::testInfoLevel_EntryExists camila-VirtualBox PHP Unit toLog Test: ERROR 1479433554.6835
+11/18/2016 - 01:45:55:1273 ERROR toLogTests::testInfoLevel_EntryExists camila-VirtualBox PHP Unit toLog Test: WARNING 1479433554.6835
+11/18/2016 - 01:45:55:3820 INFO toLogTests::testInfoLevel_EntryExists camila-VirtualBox PHP Unit toLog Test: INFO 1479433554.6835
+11/18/2016 - 01:45:56:3726 WARNING toLogTests::testDebugLevel_EntryExists camila-VirtualBox PHP Unit toLog Test: ERROR 1479433556.1918
+11/18/2016 - 01:45:56:6308 ERROR toLogTests::testDebugLevel_EntryExists camila-VirtualBox PHP Unit toLog Test: WARNING 1479433556.1918
+11/18/2016 - 01:45:56:9175 INFO toLogTests::testDebugLevel_EntryExists camila-VirtualBox PHP Unit toLog Test: INFO 1479433556.1918
+11/18/2016 - 01:45:57:1164 DEBUG toLogTests::testDebugLevel_EntryExists camila-VirtualBox PHP Unit toLog Test: DEBUG 1479433556.1918
+11/18/2016 - 01:45:57:9049 WARNING toLogTests::testErrorLevel_LogEntryCount camila-VirtualBox PHP Unit toLog Test: 1479433557.7671
+11/18/2016 - 01:45:58:9831 WARNING toLogTests::testWarningLevel_LogEntryCount camila-VirtualBox PHP Unit toLog Test: 1479433558.951
+11/18/2016 - 01:45:59:0483 ERROR toLogTests::testWarningLevel_LogEntryCount camila-VirtualBox PHP Unit toLog Test: 1479433558.951
+11/18/2016 - 01:45:59:8451 WARNING toLogTests::testInfoLevel_LogEntryCount camila-VirtualBox PHP Unit toLog Test: 1479433559.7137
+11/18/2016 - 01:45:59:9542 ERROR toLogTests::testInfoLevel_LogEntryCount camila-VirtualBox PHP Unit toLog Test: 1479433559.7137
+11/18/2016 - 01:46:00:0503 INFO toLogTests::testInfoLevel_LogEntryCount camila-VirtualBox PHP Unit toLog Test: 1479433559.7137
+11/18/2016 - 01:46:00:7754 WARNING toLogTests::testDEBUGLevel_LogEntryCount camila-VirtualBox PHP Unit toLog Test: 1479433560.728
+11/18/2016 - 01:46:00:8340 ERROR toLogTests::testDEBUGLevel_LogEntryCount camila-VirtualBox PHP Unit toLog Test: 1479433560.728
+11/18/2016 - 01:46:00:8912 INFO toLogTests::testDEBUGLevel_LogEntryCount camila-VirtualBox PHP Unit toLog Test: 1479433560.728
+11/18/2016 - 01:46:00:9394 DEBUG toLogTests::testDEBUGLevel_LogEntryCount camila-VirtualBox PHP Unit toLog Test: 1479433560.728
+11/18/2016 - 02:03:21:8159 WARNING toLogTests::testErrorLevel_EntryExists camila-VirtualBox PHP Unit toLog Test: ERROR 1479434601.6652
+11/18/2016 - 02:03:23:3159 WARNING toLogTests::testWarningLevel_EntryExists camila-VirtualBox PHP Unit toLog Test: ERROR 1479434603.0871
+11/18/2016 - 02:03:23:6321 ERROR toLogTests::testWarningLevel_EntryExists camila-VirtualBox PHP Unit toLog Test: WARNING 1479434603.0871
+11/18/2016 - 02:03:25:0589 WARNING toLogTests::testInfoLevel_EntryExists camila-VirtualBox PHP Unit toLog Test: ERROR 1479434604.8639
+11/18/2016 - 02:03:25:3371 ERROR toLogTests::testInfoLevel_EntryExists camila-VirtualBox PHP Unit toLog Test: WARNING 1479434604.8639
+11/18/2016 - 02:03:25:4900 INFO toLogTests::testInfoLevel_EntryExists camila-VirtualBox PHP Unit toLog Test: INFO 1479434604.8639
+11/18/2016 - 02:03:26:4337 WARNING toLogTests::testDebugLevel_EntryExists camila-VirtualBox PHP Unit toLog Test: ERROR 1479434606.2538
+11/18/2016 - 02:03:26:7429 ERROR toLogTests::testDebugLevel_EntryExists camila-VirtualBox PHP Unit toLog Test: WARNING 1479434606.2538
+11/18/2016 - 02:03:26:9675 INFO toLogTests::testDebugLevel_EntryExists camila-VirtualBox PHP Unit toLog Test: INFO 1479434606.2538
+11/18/2016 - 02:03:27:1833 DEBUG toLogTests::testDebugLevel_EntryExists camila-VirtualBox PHP Unit toLog Test: DEBUG 1479434606.2538
+11/18/2016 - 02:03:27:9544 WARNING toLogTests::testErrorLevel_LogEntryCount camila-VirtualBox PHP Unit toLog Test: 1479434607.8764
+11/18/2016 - 02:03:29:1346 WARNING toLogTests::testWarningLevel_LogEntryCount camila-VirtualBox PHP Unit toLog Test: 1479434609.0042
+11/18/2016 - 02:03:29:3954 ERROR toLogTests::testWarningLevel_LogEntryCount camila-VirtualBox PHP Unit toLog Test: 1479434609.0042
+11/18/2016 - 02:03:30:4894 WARNING toLogTests::testInfoLevel_LogEntryCount camila-VirtualBox PHP Unit toLog Test: 1479434610.4157
+11/18/2016 - 02:03:30:6462 ERROR toLogTests::testInfoLevel_LogEntryCount camila-VirtualBox PHP Unit toLog Test: 1479434610.4157
+11/18/2016 - 02:03:30:8404 INFO toLogTests::testInfoLevel_LogEntryCount camila-VirtualBox PHP Unit toLog Test: 1479434610.4157
+11/18/2016 - 02:03:31:6458 WARNING toLogTests::testDEBUGLevel_LogEntryCount camila-VirtualBox PHP Unit toLog Test: 1479434611.5673
+11/18/2016 - 02:03:31:8589 ERROR toLogTests::testDEBUGLevel_LogEntryCount camila-VirtualBox PHP Unit toLog Test: 1479434611.5673
+11/18/2016 - 02:03:32:0091 INFO toLogTests::testDEBUGLevel_LogEntryCount camila-VirtualBox PHP Unit toLog Test: 1479434611.5673
+11/18/2016 - 02:03:32:1315 DEBUG toLogTests::testDEBUGLevel_LogEntryCount camila-VirtualBox PHP Unit toLog Test: 1479434611.5673

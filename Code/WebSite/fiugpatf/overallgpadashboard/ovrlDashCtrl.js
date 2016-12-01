@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', [ 'ngMaterial', 'md.data.table', 'chart.js']);
+var myApp = angular.module('myApp', ['ngMaterial', 'md.data.table', 'chart.js']);
 
 myApp.controller('ovrlDashCtrl', ['$scope', '$mdDialog', 'gpaDashService', function($scope, $mdDialog, gpaDashService){
     $scope.displayNeeded = [];

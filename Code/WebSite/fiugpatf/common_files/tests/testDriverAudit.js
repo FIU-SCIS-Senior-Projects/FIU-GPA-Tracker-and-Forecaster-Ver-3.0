@@ -52,14 +52,13 @@ function subBaseData()
 {
    var firstName = $('#firstName').val();
    var lastName = $('#lastName').val();
-   var userID = $('#userID').val();
    var userName = $('#userName').val();
    var email = $('#email').val();
    var major = $('#major').val();
    var date = $('#declaredDate').val();
    var gpa = $('#gpa').val();
   
-   if(firstName == "" || lastName == "" || userID == "" || userName == "" || email == "" || major == "" || date == "" || gpa == "") {
+   if(firstName == "" || lastName == "" || userName == "" || email == "" || major == "" || date == "" || gpa == "") {
      alert ("Empty Fields");
    } else {
 
@@ -71,7 +70,6 @@ function subBaseData()
    
    $($.parseXML('<firstName>' + firstName + '</firstName>')).find("firstName").appendTo(baseData);
    $($.parseXML('<lastName>' + lastName + '</lastName>')).find("lastName").appendTo(baseData);
-   $($.parseXML('<userID>' + userID + '</userID>')).find("userID").appendTo(baseData);
    $($.parseXML('<userName>' + userName + '</userName>')).find("userName").appendTo(baseData);
    $($.parseXML('<email>' + email + '</email>')).find("email").appendTo(baseData);
    $($.parseXML('<majorName>' + major + '</majorName>')).find("majorName").appendTo(baseData);
@@ -97,6 +95,10 @@ function addTakenCourse()
 	div += '                 <tr>';
 	div += '                     <td>Course ID:</td>';
 	div += '                     <td><input type="text" id="courseID"></td>';
+	div += '                 </tr>';
+        div += '                 <tr>';
+	div += '                     <td>Course Name:</td>';
+	div += '                     <td><input type="text" id="courseName"></td>';
 	div += '                 </tr>';
         div += '                 <tr>';
         div += '                     <td>Grade:</td>' ;
@@ -132,12 +134,13 @@ function addTakenCourse()
    $('#subTaken').click(function(){
         var bucket = $('#bucket').val();
         var courseID = $('#courseID').val();
+        var courseName = $('#courseName').val();
  	var grade = $('#grade').val();
  	var credits = $('#credits').val();
 	var semester = $('#semester').val();
 	var year = $('#year').val();
 
-        if(bucket == "" || courseID == "" || grade == "" || credits == "" || semester == "" || year == "") {
+        if(bucket == "" || courseID == "" || courseName == "" || grade == "" || credits == "" || semester == "" || year == "") {
           alert ("Empty Fields");
         } else {
 
@@ -146,6 +149,7 @@ function addTakenCourse()
 
         $($.parseXML('<bucket>' + bucket + '</bucket>')).find("bucket").appendTo(courseTaken);
         $($.parseXML('<courseID>' + courseID + '</courseID>')).find("courseID").appendTo(courseTaken);
+        $($.parseXML('<courseName>' + courseName + '</courseName>')).find("courseName").appendTo(courseTaken);
         $($.parseXML('<grade>' + grade + '</grade>')).find("grade").appendTo(courseTaken);
         $($.parseXML('<credits>' + credits + '</credits>')).find("credits").appendTo(courseTaken);
 	$($.parseXML('<semester>' + semester + '</semester>')).find("semester").appendTo(courseTaken);
@@ -172,6 +176,7 @@ function updateTakenTable() {
         div += '<tr class="taken" role="row">';
     	div += '   <td class="sorting_1">' + $(this).find('bucket').text() + '</td>';
         div += '   <td>' + $(this).find('courseID').text() + '</td>';
+        div += '   <td>' + $(this).find('courseName').text() + '</td>';
         div += '   <td>' + $(this).find('grade').text() + '</td>';
         div += '   <td>' + $(this).find('credits').text() +'</td>';
 	div += '   <td>' + $(this).find('semester').text() +'</td>';
@@ -196,6 +201,10 @@ function addIPCourse() {
 	div += '                 <tr>';
 	div += '                     <td>Course ID:</td>';
 	div += '                     <td><input type="text" id="courseID"></td>';
+	div += '                 </tr>';
+        div += '                 <tr>';
+	div += '                     <td>Course Name:</td>';
+	div += '                     <td><input type="text" id="courseName"></td>';
 	div += '                 </tr>';
         div += '                     <td>Credits:</td>' ;
 	div += '                     <td><input type="text" id="credits"></td>';
@@ -226,11 +235,12 @@ function addIPCourse() {
    $('#subIP').click(function(){
         var bucket = $('#bucket').val();
         var courseID = $('#courseID').val();
+        var courseName = $('#courseName').val();
  	var credits = $('#credits').val();
 	var semester = $('#semester').val();
 	var year = $('#year').val();
 
-        if(bucket == "" || courseID == "" || credits == "" || semester == "" || year == "") {
+        if(bucket == "" || courseID == "" || courseName == "" || credits == "" || semester == "" || year == "") {
           alert ("Empty Fields");
         } else {
 
@@ -239,6 +249,7 @@ function addIPCourse() {
 
         $($.parseXML('<bucket>' + bucket + '</bucket>')).find("bucket").appendTo(courseIP);
         $($.parseXML('<courseID>' + courseID + '</courseID>')).find("courseID").appendTo(courseIP);
+        $($.parseXML('<courseName>' + courseName + '</courseName>')).find("courseName").appendTo(courseIP);
         $($.parseXML('<credits>' + credits + '</credits>')).find("credits").appendTo(courseIP);
 	$($.parseXML('<semester>' + semester + '</semester>')).find("semester").appendTo(courseIP);
 	$($.parseXML('<year>' + year + '</year>')).find("year").appendTo(courseIP);
@@ -265,6 +276,7 @@ function updateIPTable() {
         div += '<tr class="IP" role="row">';
     	div += '   <td class="sorting_1">' + $(this).find('bucket').text() + '</td>';
         div += '   <td>' + $(this).find('courseID').text() + '</td>';
+        div += '   <td>' + $(this).find('courseName').text() + '</td>';
         div += '   <td>' + $(this).find('credits').text() +'</td>';
 	div += '   <td>' + $(this).find('semester').text() +'</td>';
 	div += '   <td>' + $(this).find('year').text() +'</td>';
@@ -342,7 +354,7 @@ function importFile() {
 		}
 		else
 		{
-			alert(data);
+			//alert("ERROR");
 		}
 	},
 	error: function(XMLHttpRequest, textStatus, errorThrown){

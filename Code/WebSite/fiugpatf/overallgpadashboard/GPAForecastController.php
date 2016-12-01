@@ -48,8 +48,8 @@ class GPAForecastController {
         $db = new DatabaseConnector();
         $return = [];
 
-        $stmt   = "SELECT SUM(CourseInfo.credits) FROM StudentCourse INNER JOIN CourseInfo ON StudentCourse.courseInfoID = CourseInfo.courseInfoID WHERE (grade = 'IP' OR grade = 'ND') AND userID = ?";
-        $params = array($this->userID);
+        $stmt   = "SELECT SUM(CourseInfo.credits) FROM (SELECT DISTINCT courseInfoID, grade, userID FROM StudentCourse WHERE userID = ?) as A INNER JOIN CourseInfo ON A.courseInfoID = CourseInfo.courseInfoID WHERE (grade = 'IP' OR grade = 'ND') AND userID = ?";
+        $params = array($this->userID, $this->userID);
         $output = $db->select($stmt, $params);
 
         if($output[0][0] == '') {

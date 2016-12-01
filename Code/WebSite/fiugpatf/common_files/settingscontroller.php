@@ -436,16 +436,16 @@ class SettingsController
                 if ($parentID == null) {
                     $params = array($majorID, $details->description, $details->allRequired,
                         $details->quantity, $details->quantification);
-                    $db->query("INSERT INTO MajorBucket (majorID, description, allRequired,
-                          quantityNeeded, quantification, parentID) VALUES (?, ?, ?, ?, ?, null) ON DUPLICATE
+                    $db->query("INSERT INTO MajorBucket (majorID, dateStart, dateEnd, description, allRequired,
+                          quantityNeeded, quantification, parentID) VALUES (?, '1000-01-01', '9999-12-31', ?, ?, ?, ?, null) ON DUPLICATE
                           KEY UPDATE allRequired = VALUES (allRequired), quantification=VALUES(quantification),
                           parentID=VALUES(parentID)", $params);
                     $this->log->toLog(0, __METHOD__, "bucket imported majorID: $majorID, description: $details->description, req:$$details->allRequired, quantity:$details->quantity, quantification$$details->quantification");
                 } else {
                     $params = array($majorID, $details->description, $details->allRequired, $details->quantity,
                         $details->quantification, $parentID);
-                    $db->query("INSERT INTO MajorBucket (majorID, description, allRequired,
-                        quantityNeeded, quantification, parentID) VALUES (?, ?, ?, ?, ?, ?) ON DUPLICATE KEY
+                    $db->query("INSERT INTO MajorBucket (majorID, dateStart, dateEnd, description, allRequired,
+                        quantityNeeded, quantification, parentID) VALUES (?, '1000-01-01', '9999-12-31', ?, ?, ?, ?, ?) ON DUPLICATE KEY
                         UPDATE allRequired=VALUES(allRequired), quantification=VALUES(quantification),
                         parentID=VALUES(parentID)", $params);
                     $this->log->toLog(0, __METHOD__, "bucket imported - majorID: $majorID, start:$details->dateStart, end:$details->dateEnd, description: $details->description, req:$details->allRequired, quantity:$details->quantity, quantification$details->quantification, parent: $parentID");
@@ -456,8 +456,8 @@ class SettingsController
 
                 $bucketID = $stmt[0][0];
             } elseif ($details->getName() == "course") {
-                $params = array($details->courseID, $details->courseName, $details->credits);
-                $db->query("INSERT INTO CourseInfo (courseID, courseName, credits) VALUES (?, ?, ?)
+                $params = array($details->courseID, $details->courseName, $details->credits, $details->courseDescription);
+                $db->query("INSERT INTO CourseInfo (courseID, courseName, credits, courseDescription) VALUES (?, ?, ?, ?)
                       ON DUPLICATE KEY UPDATE courseName=VALUES(courseName), credits=VALUES(credits)", $params);
 
                 $this->log->toLog(0, __METHOD__, "course imported ID: $details->courseID, $details->courseName, credits: $details->credits");

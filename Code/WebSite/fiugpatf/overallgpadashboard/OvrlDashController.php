@@ -529,7 +529,7 @@ class OverallDashboardController
 
         $params = array($bucket['id'], $this->userID, $this->userID);
         $courses = $dbc->select("SELECT DISTINCT CourseInfo.courseID, CourseInfo.credits, StudentCourse.weight,
-          StudentCourse.relevance, StudentCourse.studentCourseID FROM StudentCourse INNER JOIN
+          StudentCourse.relevance FROM StudentCourse INNER JOIN
           CourseInfo ON CourseInfo.courseInfoID in (Select courseInfoID From MajorBucketRequiredCourses where bucketID
           = ?)AND CourseInfo.courseInfoID in (SELECT courseInfoID From StudentCourse Where userID = ?
           AND grade = 'ND' )  AND StudentCourse.courseInfoID = CourseInfo.courseInfoID And StudentCourse.userID = ?",
@@ -537,15 +537,15 @@ class OverallDashboardController
 
         $output = array();
         foreach ($courses as $course) {
-            $this->log->toLog(0, __METHOD__, "courseID: $course[0],
-            credits: $course[1], weight: $course[2], relevance: $course[3], id: $course[4],");
+            //$this->log->toLog(0, __METHOD__, "courseID: $course[0],
+            //credits: $course[1], weight: $course[2], relevance: $course[3], id: $course[4],");
 
             array_push($output, array(
                 'courseID' => $course[0],
                 'credits' => $course[1],
                 'weight' => $course[2],
-                'relevance' => $course[3],
-                'id' => $course[4]));
+                'relevance' => $course[3]
+                /*'id' => $course[4]*/));
         }
 
         echo json_encode($output);

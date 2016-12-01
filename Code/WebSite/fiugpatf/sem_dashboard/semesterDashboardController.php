@@ -24,7 +24,7 @@ class SemesterDashboardController
         $user = $this->userID;
         $return = [];
 
-        $stmt = "SELECT CourseInfo.courseID, CourseInfo.courseName, CourseInfo.credits FROM StudentCourse INNER JOIN CourseInfo ON StudentCourse.courseInfoID = CourseInfo.courseInfoID WHERE grade = 'IP' AND userID = ? ";
+        $stmt = "SELECT DISTINCT CourseInfo.courseID, CourseInfo.courseName, CourseInfo.credits FROM StudentCourse INNER JOIN CourseInfo ON StudentCourse.courseInfoID = CourseInfo.courseInfoID WHERE grade = 'IP' AND userID = ? ";
         $params = array($this->userID);
         $output = $db->select($stmt, $params);
 

@@ -83,7 +83,7 @@ $('#addRootBtn').click(function(){
        addRootBucket();
     }
     else {
-     alert('Submit base data first');
+     alert('Submit program data first');
     }
    });
 
@@ -162,6 +162,10 @@ function addRootBucket()
    $('#subRoot').click(function(){
         var description = $('#description').val();
         var allRequired = $('#allRequired').val();
+        if (allRequired == "yes" || allRequired == "Yes")
+           var allRequiredNum = "1";
+        else
+           var allRequiredNum = "0";
  	var quantity = $('#quantity').val();
  	var quantification = $('#quantification').val();
 
@@ -175,7 +179,7 @@ function addRootBucket()
         var data = $(xmlDoc).find('data').last();
 
         $($.parseXML('<description>' + description + '</description>')).find("description").appendTo(data);
-        $($.parseXML('<allRequired>' + allRequired + '</allRequired>')).find("allRequired").appendTo(data);
+        $($.parseXML('<allRequired>' + allRequiredNum + '</allRequired>')).find("allRequired").appendTo(data);
         $($.parseXML('<quantity>' + quantity + '</quantity>')).find("quantity").appendTo(data);
         $($.parseXML('<quantification>' + quantification + '</quantification>')).find("quantification").appendTo(data);
 
@@ -537,6 +541,10 @@ function addChild(oTable, nTr)
    $('#subChild').click(function(){
         var description = $('#description').val();
         var allRequired = $('#allRequired').val();
+        if (allRequired == "yes" || allRequired == "Yes")
+           var allRequiredNum = "1";
+        else
+           var allRequiredNum = "0";
  	var quantity = $('#quantity').val();
  	var quantification = $('#quantification').val();
 
@@ -559,7 +567,7 @@ function addChild(oTable, nTr)
                  if ($(this).attr("id") == description) {
                     var data = $(this);
                     $($.parseXML('<description>' + description + '</description>')).find("description").appendTo(data);
-                    $($.parseXML('<allRequired>' + allRequired + '</allRequired>')).find("allRequired").appendTo(data);
+                    $($.parseXML('<allRequired>' + allRequiredNum + '</allRequired>')).find("allRequired").appendTo(data);
                     $($.parseXML('<quantity>' + quantity + '</quantity>')).find("quantity").appendTo(data);
                     $($.parseXML('<quantification>' + quantification + '</quantification>')).find("quantification").appendTo(data);
                  }
