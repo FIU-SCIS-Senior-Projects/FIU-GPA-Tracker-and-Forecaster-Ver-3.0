@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FIU GPA Tracker</title>
+    <script src=
+    "https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+    </script>
+    <script src=
+    "https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js">
+    </script>
+    <script src=
+    "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js">
+    </script>
+    <script src=
+    "https://cdn.datatables.net/plug-ins/1.10.9/api/fnReloadAjax.js">
+    </script>
+    <link href=
+    "https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel=
+    "stylesheet" type="text/css">
+    <script src="nav.js" type="text/javascript">
+    </script>
+    <link href=
+    "http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/overcast/jquery-ui.css"
+    rel="stylesheet">
+    <script src=
+    "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+    </script>
+    <link href=
+    "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel=
+    "stylesheet">
+    <link href="main2.css" rel="stylesheet" type="text/css">
+    <script src='OvrlDash_help.js' type='text/javascript'>
+    </script>
+</head>
+<body class="gpahelp">
+    <div class="yellowBar"></div>
+    <div id="header">
+        <div class="container clearfix">
+            <div class="logo">
+                <img class="logo" src=
+                "http://www.fiu.edu/_assets/images/core/fiu-logo-large.png">
+                <a href="OvrlDash.html">Overall GPA Dashboard</a>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li>
+                        <a href="OvrlDash.html">GPA Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="../sem_dashboard/current.html">Semester
+                        Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="../common_files/settings.html">Settings</a>
+                    </li>
+                    <li>
+                        <a href="../login.html">Logout</a>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <a class="btn btn-default dropdown-toggle"
+                            data-toggle="dropdown">Help <span class=
+                            "caret"></span></a>
+                            <ul class="dropdown-menu" style="margin-top: 1px;">
+                                <li>
+                                    <a href="OvrlDash_help_contents.html">GPA Dashboard Help</a>
+                                </li>
+                                <li>
+                                    <a href="../sem_dashboard/SemHelpContents.html">Semester Dashboard Help</a>
+                                </li>
+                                <li>
+                                    <a href="about.html">About</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotronOVRLabout">
+        <div class="textboxAbout">
+            <h3>THE GPA DASHBOARD</h3><p>The GPA Dashboard allows students to track their academic progress throughout their time at FIU and compare their calculated GPA to the GPA required for their target graduate program. Students will have the option to receive an indiviualized forecast upon assigning a value to the weight and relevance of classes they are going to take. The forecast generates the appropriate grades for each class that a student should strive for. 
+</p> 
+        </div>
+    </div>
+    <div class="footer"></div>
+</body>
+</html>

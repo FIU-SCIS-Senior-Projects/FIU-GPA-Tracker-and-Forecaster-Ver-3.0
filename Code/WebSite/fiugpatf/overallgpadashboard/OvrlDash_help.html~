@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FIU GPA Tracker</title>
+    <script src=
+    "https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+    </script>
+    <script src=
+    "https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js">
+    </script>
+    <script src=
+    "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js">
+    </script>
+    <script src=
+    "https://cdn.datatables.net/plug-ins/1.10.9/api/fnReloadAjax.js">
+    </script>
+    <link href=
+    "https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel=
+    "stylesheet" type="text/css">
+    <script src="nav.js" type="text/javascript">
+    </script>
+    <link href=
+    "http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/overcast/jquery-ui.css"
+    rel="stylesheet">
+    <script src=
+    "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+    </script>
+    <link href=
+    "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel=
+    "stylesheet">
+    <link href="main2.css" rel="stylesheet" type="text/css">
+    <script src='OvrlDash_help.js' type='text/javascript'>
+    </script>
+</head>
+<body class="gpahelp">
+    <div class="yellowBar"></div>
+    <div id="header">
+        <div class="container clearfix">
+            <div class="logo">
+                <img class="logo" src=
+                "http://www.fiu.edu/_assets/images/core/fiu-logo-large.png">
+                <a href="OvrlDash.html">Overall GPA Dashboard</a>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li>
+                        <a href="OvrlDash.html">GPA Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="../sem_dashboard/current.html">Semester
+                        Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="../common_files/settings.html">Settings</a>
+                    </li>
+                    <li>
+                        <a href="../login.html">Logout</a>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <a class="btn btn-default dropdown-toggle"
+                            data-toggle="dropdown">Help <span class=
+                            "caret"></span></a>
+                            <ul class="dropdown-menu" style="margin-top: 1px;">
+                                <li>
+                                    <a href="OvrlDash_help_contents.html">GPA Dashboard Help</a>
+                                </li>
+                                <li>
+                                    <a href="../sem_dashboard/SemHelpContents.html">Semester Dashboard Help</a>
+                                </li>
+                                <li>
+                                    <a href="about.html">About</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotronOVRL">
+        <!-- <h4 style = "margin-top: -15px"> GPA DASHBOARD TUTORIAL SLIDESHOW </h4> -->
+        <div class="slidecounter">
+            <p id="currentslide">1/15</p>
+        </div>
+				<div id = "mid" >
+					<div id = "tContents" >
+						
+				<ol id = "tablecontentslist" type ="I">
+						<li id ="f1"><a><span id = "slidecontents">Screen Privacy...1</span></a></li><br>
+						<li id ="f2"><a><span id = "slidecontents">Courses Taken Dropdown feature...3</span></a></li><br>
+						<li id ="f3"><a><span id = "slidecontents">Modify Grade...5</span></a></li><br>
+						<li id ="f4"><a><span id = "slidecontents">Delete Course...7</span></a></li><br>
+						<li id ="f5"><a><span id = "slidecontents">Courses Needed Dropdown feature...9</span></a></li><br>
+						<li id ="f6"><a><span id = "slidecontents">Modify Weight and Relevance..10</span></a></li><br>
+						<li id ="f7"><a><span id = "slidecontents">Add course Feature...12</span></a></li>	<br>
+						<li id ="f8"><a><span id = "slidecontents">Target graduate Program...13</span></a></li>
+				</ol>
+					</div>
+        <div id="slideshow">
+            <a class="slideshow-prev" href="#">&laquo;</a>
+            <ul>
+                <li><img alt="photo1" src=
+                "https://40.media.tumblr.com/88682269c5f8bc7383061229930a8f77/tumblr_nwozym1n7z1qfj39xo1_1280.png"></li>
+                <li><img alt="photo2" src=
+                "https://36.media.tumblr.com/21eb8230ab83fa7fccbfe07ff481aadf/tumblr_nwozym1n7z1qfj39xo2_1280.png"></li>
+                <li><img alt="photo3" src=
+                "https://41.media.tumblr.com/1ebcc4fd1486e9614b2db11e58e8ea2e/tumblr_nwozym1n7z1qfj39xo3_1280.png"></li>
+                <li><img alt="photo4" src=
+                "https://36.media.tumblr.com/03b08e22eb37860b3ccc29fc10f83e94/tumblr_nwozym1n7z1qfj39xo5_1280.png"></li>
+                <li><img alt="photo5" src=
+                "https://40.media.tumblr.com/b9e2517dc4d4bac78eba1dbb2462ad96/tumblr_nwozym1n7z1qfj39xo4_1280.png"></li>
+                <li><img alt="photo6" src=
+                "https://40.media.tumblr.com/cf1265933fbb5a96ae45ab724aacfdd3/tumblr_nwozym1n7z1qfj39xo6_1280.png"></li>
+                <li><img alt="photo7" src=
+                "https://41.media.tumblr.com/92ea7b3019ad0ddda7a99f204cdda136/tumblr_nwozym1n7z1qfj39xo7_1280.png"></li>
+                <li><img alt="photo8" src=
+                "https://36.media.tumblr.com/5925284ac77c6920a4b8569eb4528447/tumblr_nwozym1n7z1qfj39xo8_1280.png"></li>
+                <li><img alt="photo9" src=
+                "https://40.media.tumblr.com/9ffa391daf1c9b00db4b1a571f51f0b4/tumblr_nwozym1n7z1qfj39xo9_1280.png"></li>
+                <li><img alt="photo10" src=
+                "https://36.media.tumblr.com/e7e724ded9134054c8e143d09a27788b/tumblr_nwozym1n7z1qfj39xo10_1280.png"></li>
+                <li><img alt="photo11" src=
+                "https://40.media.tumblr.com/cc6cb101daa2458be05834ecdc29c4d3/tumblr_nwozzoLeAZ1qfj39xo1_1280.png"></li>
+                <li><img alt="photo12" src=
+                "https://41.media.tumblr.com/39512c59e1bdef22d3ff771612c1d638/tumblr_nwozzoLeAZ1qfj39xo2_1280.png"></li>
+                <li><img alt="photo13" src=
+                "https://40.media.tumblr.com/b525b6f7840f4790d2cc9f597b11af1d/tumblr_nwozzoLeAZ1qfj39xo3_1280.png"></li>
+                <li><img alt="photo14" src=
+                "https://41.media.tumblr.com/32960621816430bb0fd9f2aa37da6983/tumblr_nwozzoLeAZ1qfj39xo4_1280.png"></li>
+                <li><img alt="photo15" src=
+                "https://40.media.tumblr.com/1fb0d5451f0f79db7d864da249dfc8fd/tumblr_nwozzoLeAZ1qfj39xo5_1280.png"></li>
+            </ul><a class="slideshow-next" href="#">&raquo;</a>
+        </div>
+				</div>
+        <div class="slideshowtext">
+            <p id="slideshowtext">...</p>
+        </div>
+    </div>
+    <div class="footer"></div>
+</body>
+</html>

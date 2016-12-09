@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Audit Test Driver</title>
+   
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+   <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+   <script src="https://cdn.datatables.net/plug-ins/1.10.9/api/fnReloadAjax.js"></script>
+   <link href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+   <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    
+   <script src="http://malsup.github.com/jquery.form.js"></script> 
+   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/overcast/jquery-ui.css">
+
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.min.js"></script>
+    <script type="text/javascript" src="http://raw.github.com/markrcote/flot-axislabels/master/jquery.flot.axislabels.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.time.min.js"></script>
+    
+    
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/overcast/jquery-ui.css"rel="stylesheet">
+
+   <script src='testDriverAudit.js' type='text/javascript'></script>
+</head>
+
+<body>
+   <div style="text-align:center;">
+      <h1 style="font-size: 30px;" >AUDIT REPORT TEST DRIVER</h1>
+   </div>
+   <div id="baseDataAddition" style="margin-left: 20px;">
+      <table>
+         <thead>
+            <tr>
+               <td>First Name:</td>
+               <td><input type="text" id="firstName"></td>
+            </tr>
+            <tr>
+               <td>Last Name:</td>
+               <td><input type="text" id="lastName"></td>
+            </tr>
+            <tr>
+               <td>User Name:</td>
+               <td><input type="text" id="userName"></td>
+            </tr>
+	    <tr>
+               <td>Email:</td>
+               <td><input type="text" id="email"></td>
+            </tr>
+	    <tr>
+               <td>Major:</td>
+               <td><input type="text" id="major"></td>
+            </tr>
+            <tr>
+               <td>Declared Date:</td>
+               <td><input type="text" id="declaredDate"></td>
+            </tr>
+            <tr>
+               <td>GPA:</td>
+               <td><input type="text" id="gpa"></td>
+            </tr>
+         </thead>
+      </table>
+      <button type="button" id="subBaseData">Submit</button>
+   </div>
+   <br>
+   <br>
+   <form style="margin-left: 20px;">
+      <button id="generateXMLBtn" type="button">Generate XML</button>
+   </form>
+      <input type="file" id="ImportFile" style="margin-left: 20px;">
+   <div class="tables">
+      <div class="takenTable" style="width: 50%; float: left;">
+        <h1 style="font-size: 25px; margin-left:20px">Courses Taken</h1>
+        <form style="margin-left: 20px;">
+          <button id="addTakenBtn" type="button">Add Taken Course</button>
+          <br>
+          <br>
+        </form>
+         <div id="parentTableTaken_wrapper" class="dataTables_wrapper no-footer">
+          
+            <table id="parentTableTaken" class="dataTable no-footer" role="grid" aria-describedby="parentTableTaken_info" style="width:95%;" width="95%" border="1">
+               <thead>
+                <tr role="row">
+                  <th class="sorting ui-state-default sorting_asc" tabindex="0" aria-controls="parentTableRoot" rowspan="1" colspan="1" style="width: 365px;" aria-sort="ascending" aria-label="Bucket: activate to sort column descending">
+                     <div class="DataTables_sort_wrapper">
+                        Bucket
+                        <span class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n"></span>
+                     </div>
+		  </th>
+                  <th class="sorting ui-state-default sorting_asc" tabindex="0" aria-controls="parentTableRoot" rowspan="1" colspan="1" style="width: 365px;" aria-sort="ascending" aria-label="CourseID: activate to sort column descending">
+                     <div class="DataTables_sort_wrapper">
+                        Course ID
+                        <span class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n"></span>
+                     </div>
+		  </th>
+                  <th class="sorting ui-state-default sorting_asc" tabindex="0" aria-controls="parentTableRoot" rowspan="1" colspan="1" style="width: 365px;" aria-sort="ascending" aria-label="CourseName: activate to sort column descending">
+                     <div class="DataTables_sort_wrapper">
+                        Course Name
+                        <span class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n"></span>
+                     </div>
+		  </th>
+                  <th class="sorting ui-state-default sorting_asc" tabindex="0" aria-controls="parentTableRoot" rowspan="1" colspan="1" style="width: 365px;" aria-sort="ascending" aria-label="Grade: activate to sort column descending">
+                     <div class="DataTables_sort_wrapper">
+                        Grade
+                        <span class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n"></span>
+                     </div>
+		  </th>
+                  <th class="sorting ui-state-default sorting_asc" tabindex="0" aria-controls="parentTableRoot" rowspan="1" colspan="1" style="width: 365px;" aria-sort="ascending" aria-label="Credits: activate to sort column descending">
+                     <div class="DataTables_sort_wrapper">
+                        Credits
+                        <span class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n"></span>
+                     </div>
+		  </th>
+                  <th class="sorting ui-state-default sorting_asc" tabindex="0" aria-controls="parentTableRoot" rowspan="1" colspan="1" style="width: 365px;" aria-sort="ascending" aria-label="Semester: activate to sort column descending">
+                     <div class="DataTables_sort_wrapper">
+                        Semester
+                        <span class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n"></span>
+                     </div>
+		  </th>
+		  <th class="sorting ui-state-default sorting_asc" tabindex="0" aria-controls="parentTableRoot" rowspan="1" colspan="1" style="width: 365px;" aria-sort="ascending" aria-label="Year: activate to sort column descending">
+                     <div class="DataTables_sort_wrapper">
+                        Year
+                        <span class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n"></span>
+                     </div>
+		  </th>
+                </tr>
+               </thead>
+               <tbody id="takenRows">
+               </tbody>
+            </table>
+         </div>
+      </div>
+      <div class="ipTable" style="width: 50%; float: right;">
+        <h1 style="font-size: 25px; margin-left:20px">Courses In Progress</h1>
+        <form style="margin-left: 20px;">
+          <button id="addIPBtn" type="button">Add IP Course</button>
+          <br>
+          <br>
+        </form>
+         <div id="parentTableTaken_wrapper" class="dataTables_wrapper no-footer">
+            <table id="parentTableIP" class="dataTable no-footer" role="grid" aria-describedby="parentTableIP_info" style="width:95%;" width="95%" border="1">
+               <thead>
+                <tr role="row">
+                  <th class="sorting ui-state-default sorting_asc" tabindex="0" aria-controls="parentTableRoot" rowspan="1" colspan="1" style="width: 365px;" aria-sort="ascending" aria-label="Bucket: activate to sort column descending">
+                     <div class="DataTables_sort_wrapper">
+                        Bucket
+                        <span class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n"></span>
+                     </div>
+		  </th>
+                  <th class="sorting ui-state-default sorting_asc" tabindex="0" aria-controls="parentTableRoot" rowspan="1" colspan="1" style="width: 365px;" aria-sort="ascending" aria-label="CourseID: activate to sort column descending">
+                     <div class="DataTables_sort_wrapper">
+                        Course ID
+                        <span class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n"></span>
+                     </div>
+		  </th>
+                  <th class="sorting ui-state-default sorting_asc" tabindex="0" aria-controls="parentTableRoot" rowspan="1" colspan="1" style="width: 365px;" aria-sort="ascending" aria-label="CourseName: activate to sort column descending">
+                     <div class="DataTables_sort_wrapper">
+                        Course Name
+                        <span class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n"></span>
+                     </div>
+		  </th>
+                  <th class="sorting ui-state-default sorting_asc" tabindex="0" aria-controls="parentTableRoot" rowspan="1" colspan="1" style="width: 365px;" aria-sort="ascending" aria-label="Credits: activate to sort column descending">
+                     <div class="DataTables_sort_wrapper">
+                        Credits
+                        <span class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n"></span>
+                     </div>
+		  </th>
+                  <th class="sorting ui-state-default sorting_asc" tabindex="0" aria-controls="parentTableRoot" rowspan="1" colspan="1" style="width: 365px;" aria-sort="ascending" aria-label="Semester: activate to sort column descending">
+                     <div class="DataTables_sort_wrapper">
+                        Semester
+                        <span class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n"></span>
+                     </div>
+		  </th>
+		  <th class="sorting ui-state-default sorting_asc" tabindex="0" aria-controls="parentTableRoot" rowspan="1" colspan="1" style="width: 365px;" aria-sort="ascending" aria-label="Year: activate to sort column descending">
+                     <div class="DataTables_sort_wrapper">
+                        Year
+                        <span class="DataTables_sort_icon css_right ui-icon ui-icon-triangle-1-n"></span>
+                     </div>
+		  </th>
+                </tr>
+               </thead>
+               <tbody id="IPRows">
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+   <div id="dialog">
+    </div>
+   
+</body>
+</html>

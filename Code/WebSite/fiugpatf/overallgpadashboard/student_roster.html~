@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Roster</title>
+    <script src=
+    "https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+    </script>
+    <script src=
+    "https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js">
+    </script>
+    <link href=
+    "https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel=
+    "stylesheet" type="text/css">
+    <link href="main2.css" rel="stylesheet" type="text/css">
+    <script src="nav.js" type="text/javascript">
+    </script>
+    <link href=
+    "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css"
+    rel="stylesheet">
+    <script src=
+    "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js">
+    </script>
+    <script src='OvrlDash.js' type='text/javascript'>
+    </script>
+</head>
+<body>
+    <div class="yellowBar"></div>
+    <div id="header">
+        <div class="container clearfix">
+            <div class="logo">
+                <img class="logo" src=
+                "http://www.fiu.edu/_assets/images/core/fiu-logo-large.png">
+                <a href="#">Overall GPA Dashboard</a>
+            </div>
+            <div class="nav">
+                <ul>
+                  <!--  <li>
+                        <a href="OvrlDash.html">GPA Dashboard</a>
+                    </li> -->
+                    <li>
+                        <a href="../common_files/admin_settings.html">Admin Settings</a>
+                    </li>
+                    <li>
+                        <a href="../common_files/insert_course.html">Course List</a>
+                    </li>
+                    <li>
+                        <a href="index.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotronSTUDROST">
+        <div>
+            <table border="1" cellspacing="0" id="studRost" width="100%">
+                <thead class="tableHead">
+                    <tr>
+                        <th colspan="4">Student Roster</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody class="tableBody"></tbody>
+            </table>
+        </div>
+        <div></div>
+    </div>
+    <div class="footer"></div>
+</body>
+</html>

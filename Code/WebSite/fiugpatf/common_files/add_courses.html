@@ -1,0 +1,48 @@
+<!DOCTYPE=html>
+<html>
+	<head>
+		<title>FIU GPA Tracker</title>
+		<link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css"/>
+		<link type="text/css" rel="stylesheet" href="../css/main.css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" src="addCourse.js"></script>
+	</head>
+	<body>
+		<div class="yellowBar"></div>
+		<div id="header">
+			<div class="headerLinks" class="container clearfix">
+				<div class="logo">
+					<img class="logo" src="http://www.fiu.edu/_assets/images/core/fiu-logo-large.png" />
+					<a href=../index.html>GPA Tracker and Forecaster</a>
+				</div>
+				<div class="nav">
+					<ul>
+						<li><a href="register.html">Register</a></li>
+						<li><a href=#>Log out</a></li>
+						<li><a href=#>About</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class ="add_course">
+			<form action="add_courses.php" method="post">
+				<table id="addCourseTable" class="display" cellspacing="0" width="100%">
+					<thead>
+						<tr>
+							<th>select</th>
+							<th>Course ID</th>
+							<th>Course Name</th>
+							<th>Credits</th>
+						</tr>
+					</thead>
+					<tbody id="tableBody">
+					</tbody>
+				</table>
+				<input type="submit" value="Submit">
+			</form>
+		</div>
+		<div class="footer">
+		</div>
+	</body>
+</html>
